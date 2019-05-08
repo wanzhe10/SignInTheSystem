@@ -1,5 +1,5 @@
 
-.succeed-top{
+.succeed-top {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -10,10 +10,13 @@
 	        justify-content: space-between;
 	/* margin-top: 30upx; */
 }
-.veryCome{
+.veryCome {
 	text-align: center;
-	margin-top:100rpx;
+	margin-top: 100rpx;
 	font-size: 18px;
 	font-weight: bold;
+}
+.page-button {
+	margin-top: 200rpx;
 }
 

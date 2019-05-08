@@ -1,27 +1,26 @@
 <template>
 	<view class="page">
 		<view class="page-form">
-			<view class="page-item ">
+			<view class="page-item  page-block">
 				<view class="page-font">姓名：</view><input type="text" value="" />
 			</view>
-			<view class="page-item">
+			<view class="page-item page-block">
 				<view class="page-font">所在医院：</view>
-				<!-- <input type="text" value="" /> -->
 				<picker @change="bindPickerChange" :value="index" :range="array">
 					<view class="uni-input">{{array[index]}}</view>
 				</picker>
 			</view>
-			<view class="page-item">
+			<view class="page-item page-block">
 				<view class="page-font">所在科室：</view>
 				<picker @change="bindPickerChange2" :value="index2" :range="array">
 					<view class="uni-input">{{array[index2]}}</view>
 				</picker>
 			</view>
-			<view class="page-item">
-				<view class="page-font">联系电话：</view><input type="text" value="" />
+			<view class="page-item page-block">
+				<view class="page-font">联系电话：</view><input type="number" maxlength="11" value="" />
 			</view>
-			<button type="default" plain="true" class="page-button" @click="succeed">确定</button>
 		</view>
+		   <button type="primary"  class="page-button" @click="succeed">确定</button>
 	</view>
 </template>
 
@@ -55,15 +54,6 @@
 </script>
 
 <style>
-	.page {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: row;
-		width: 100%;
-		height: 100%;
-	}
-
 	.page-form {
 		display: flex;
 		flex-direction: column;
@@ -73,26 +63,27 @@
 	.page-item {
 		display: flex;
 		flex-direction: row;
+		padding:20upx;
+		margin-bottom:30upx;
 	}
 
 	.page-font {
-		width: 200upx;
+		width: 30%;
 		text-align: center;
-		margin-bottom: 80upx;
 	}
 
 	input {
-		width: 400upx;
-		height: 80upx;
-		border: 1px solid #ccc;
+		width: 70%;
+		/* height: 80upx; */
+		/* border: 1px solid #ccc; */
 		display: inline-block;
-		padding-left: 30upx;
 		line-height: 80upx;
 		border-radius: 8px;
+		font-size: 16px;
 	}
 
 	.page-button {
-		width: 400upx;
+		/* width: 400upx; */
 		margin-top: 200upx;
 	}
 </style>

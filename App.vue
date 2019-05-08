@@ -27,6 +27,9 @@
 	.page-block {
 		background-color: #ffffff;
 	}
+	.page-box{
+		padding:20upx;
+	}
 	
 	.line-wapper {
 		padding: 0upx 20upx;

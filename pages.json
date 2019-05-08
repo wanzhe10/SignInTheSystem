@@ -38,6 +38,10 @@
             "path" : "pages/contactUs/contactUs",
             "style" : {}
         }
+        ,{
+            "path" : "pages/myMes/myMes",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

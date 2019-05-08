@@ -1,0 +1,1 @@
+<view bind:__l="__l">二维码</view>

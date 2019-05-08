@@ -7,7 +7,8 @@
     "pages/succeed/succeed",
     "pages/signIn/signIn",
     "pages/explain/explain",
-    "pages/contactUs/contactUs"
+    "pages/contactUs/contactUs",
+    "pages/myMes/myMes"
   ],
   "subPackages": [],
   "window": {
