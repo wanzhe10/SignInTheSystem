@@ -7094,23 +7094,6 @@ createApp(app).$mount();
 
 /***/ }),
 
-/***/ "E:\\签到系统\\SignInTheSystem\\main.js?{\"page\":\"me%2Fme\"}":
-/*!**********************************************************!*\
-  !*** E:/签到系统/SignInTheSystem/main.js?{"page":"me%2Fme"} ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\签到系统\\SignInTheSystem\\pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _me = _interopRequireDefault(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module './me/me.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_me.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
 /***/ "E:\\签到系统\\SignInTheSystem\\main.js?{\"page\":\"pages%2Fblank%2Fblank\"}":
 /*!************************************************************************!*\
   !*** E:/签到系统/SignInTheSystem/main.js?{"page":"pages%2Fblank%2Fblank"} ***!
@@ -7128,6 +7111,40 @@ createPage(_blank.default);
 
 /***/ }),
 
+/***/ "E:\\签到系统\\SignInTheSystem\\main.js?{\"page\":\"pages%2FcontactUs%2FcontactUs\"}":
+/*!********************************************************************************!*\
+  !*** E:/签到系统/SignInTheSystem/main.js?{"page":"pages%2FcontactUs%2FcontactUs"} ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\签到系统\\SignInTheSystem\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _contactUs = _interopRequireDefault(__webpack_require__(/*! ./pages/contactUs/contactUs.vue */ "E:\\签到系统\\SignInTheSystem\\pages\\contactUs\\contactUs.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_contactUs.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\签到系统\\SignInTheSystem\\main.js?{\"page\":\"pages%2Fexplain%2Fexplain\"}":
+/*!****************************************************************************!*\
+  !*** E:/签到系统/SignInTheSystem/main.js?{"page":"pages%2Fexplain%2Fexplain"} ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\签到系统\\SignInTheSystem\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _explain = _interopRequireDefault(__webpack_require__(/*! ./pages/explain/explain.vue */ "E:\\签到系统\\SignInTheSystem\\pages\\explain\\explain.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_explain.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
 /***/ "E:\\签到系统\\SignInTheSystem\\main.js?{\"page\":\"pages%2Findex%2Findex\"}":
 /*!************************************************************************!*\
   !*** E:/签到系统/SignInTheSystem/main.js?{"page":"pages%2Findex%2Findex"} ***!
@@ -7141,6 +7158,74 @@ createPage(_blank.default);
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
 var _index = _interopRequireDefault(__webpack_require__(/*! ./pages/index/index.vue */ "E:\\签到系统\\SignInTheSystem\\pages\\index\\index.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_index.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\签到系统\\SignInTheSystem\\main.js?{\"page\":\"pages%2Fmassage%2Fmassage\"}":
+/*!****************************************************************************!*\
+  !*** E:/签到系统/SignInTheSystem/main.js?{"page":"pages%2Fmassage%2Fmassage"} ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\签到系统\\SignInTheSystem\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _massage = _interopRequireDefault(__webpack_require__(/*! ./pages/massage/massage.vue */ "E:\\签到系统\\SignInTheSystem\\pages\\massage\\massage.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_massage.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\签到系统\\SignInTheSystem\\main.js?{\"page\":\"pages%2Fme%2Fme\"}":
+/*!******************************************************************!*\
+  !*** E:/签到系统/SignInTheSystem/main.js?{"page":"pages%2Fme%2Fme"} ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\签到系统\\SignInTheSystem\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _me = _interopRequireDefault(__webpack_require__(/*! ./pages/me/me.vue */ "E:\\签到系统\\SignInTheSystem\\pages\\me\\me.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_me.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\签到系统\\SignInTheSystem\\main.js?{\"page\":\"pages%2FsignIn%2FsignIn\"}":
+/*!**************************************************************************!*\
+  !*** E:/签到系统/SignInTheSystem/main.js?{"page":"pages%2FsignIn%2FsignIn"} ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\签到系统\\SignInTheSystem\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _signIn = _interopRequireDefault(__webpack_require__(/*! ./pages/signIn/signIn.vue */ "E:\\签到系统\\SignInTheSystem\\pages\\signIn\\signIn.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_signIn.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\签到系统\\SignInTheSystem\\main.js?{\"page\":\"pages%2Fsucceed%2Fsucceed\"}":
+/*!****************************************************************************!*\
+  !*** E:/签到系统/SignInTheSystem/main.js?{"page":"pages%2Fsucceed%2Fsucceed"} ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\签到系统\\SignInTheSystem\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _succeed = _interopRequireDefault(__webpack_require__(/*! ./pages/succeed/succeed.vue */ "E:\\签到系统\\SignInTheSystem\\pages\\succeed\\succeed.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_succeed.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),

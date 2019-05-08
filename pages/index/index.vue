@@ -1,6 +1,6 @@
 <template>
-	<view class="contant">
-		<view class="signIconBox"  @click="signTo">
+	<view class="page contant">
+		<view class="signIconBox" @click="signTo">
 			<image src="../../static/logo.png" class="logo"></image>
 			<view class="sign-font">签到</view>
 		</view>
@@ -18,31 +18,32 @@
 
 		},
 		methods: {
-signTo(){
-	uni.navigateTo({
-		url:'../massage/massage'
-	})
-}
+			signTo() {
+				uni.navigateTo({
+					url: '../massage/massage'
+				})
+			}
 		}
 	}
 </script>
 
 <style>
+
 	.contant {
-	  display: flex;
-  align-items: center;
-  justify-content: center;  
-  width: 100%;
-  height: 100%;
+		/* display: flex; */
+		/* align-items: center; */
+		/* justify-content: center; */
 	}
-	.signIconBox{
+
+	.signIconBox {
 		text-align: center;
 	}
+
 	.logo {
 		height: 200upx;
 		width: 200upx;
 		margin-top: 200upx;
-		
+
 	}
 
 	.title {

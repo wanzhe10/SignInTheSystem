@@ -1,1 +1,1 @@
-<view class="content" bind:__l="__l">这是首页</view>
+<view class="page contant" bind:__l="__l"><view data-event-opts="{{[['tap',[['signTo',['$event']]]]]}}" class="signIconBox" bindtap="__e"><image class="logo" src="../../static/logo.png"></image><view class="sign-font">签到</view></view></view>

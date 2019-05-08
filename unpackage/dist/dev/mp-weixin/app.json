@@ -1,8 +1,13 @@
 {
   "pages": [
     "pages/index/index",
-    "me/me",
-    "pages/blank/blank"
+    "pages/me/me",
+    "pages/blank/blank",
+    "pages/massage/massage",
+    "pages/succeed/succeed",
+    "pages/signIn/signIn",
+    "pages/explain/explain",
+    "pages/contactUs/contactUs"
   ],
   "subPackages": [],
   "window": {
@@ -19,15 +24,21 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "签到"
+        "text": "签到",
+        "iconPath": "static/sign.png",
+        "selectedIconPath": "static/sign-sel.png"
       },
       {
         "pagePath": "pages/blank/blank",
-        "text": "空白按钮"
+        "text": "发现",
+        "iconPath": "static/black.png",
+        "selectedIconPath": "static/black-sle.png"
       },
       {
         "pagePath": "pages/me/me",
-        "text": "我的"
+        "text": "我的",
+        "iconPath": "static/me.png",
+        "selectedIconPath": "static/me_sel.png"
       }
     ]
   },

@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view class="page">
 		这是空白页
 	</view>
 </template>

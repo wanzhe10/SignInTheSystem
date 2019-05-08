@@ -1,7 +1,11 @@
 
-.content {
+.contant {
+	/* display: flex; */
+	/* align-items: center; */
+	/* justify-content: center; */
+}
+.signIconBox {
 	text-align: center;
-	height: 400rpx;
 }
 .logo {
 	height: 200rpx;

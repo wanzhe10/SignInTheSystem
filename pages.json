@@ -26,6 +26,18 @@
             "path" : "pages/succeed/succeed",
             "style" : {}
         }
+        ,{
+            "path" : "pages/signIn/signIn",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/explain/explain",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/contactUs/contactUs",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
@@ -41,15 +53,21 @@
 		"list":[
 			{
 			"pagePath":"pages/index/index",
-				"text":"签到"
+				"text":"签到",
+				"iconPath":"static/sign.png",
+				"selectedIconPath":"static/sign-sel.png"
 			},
 			{
 			"pagePath":"pages/blank/blank",
-				"text":"空白按钮"
+				"text":"发现",
+				"iconPath":"static/black.png",
+				"selectedIconPath":"static/black-sle.png"
 			},
 			{
 			"pagePath":"pages/me/me",
-				"text":"我的"
+				"text":"我的",
+				"iconPath":"static/me.png",
+				"selectedIconPath":"static/me_sel.png"
 			}
 		]
 	}
