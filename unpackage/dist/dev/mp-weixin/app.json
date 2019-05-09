@@ -8,7 +8,8 @@
     "pages/signIn/signIn",
     "pages/explain/explain",
     "pages/contactUs/contactUs",
-    "pages/myMes/myMes"
+    "pages/myMes/myMes",
+    "pages/search/search"
   ],
   "subPackages": [],
   "window": {
@@ -43,5 +44,6 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
 }

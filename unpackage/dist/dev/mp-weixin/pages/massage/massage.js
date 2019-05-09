@@ -34,13 +34,48 @@
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
       array: ['中国', '美国', '巴西', '日本'],
       index: 0,
-      index2: 0 };
+      index2: 0,
+      hospatalShow: 'false',
+      officeShow: 'false',
+      handImportHtml: '手动填写',
+      handImportHtmlOffce: '手动填写',
+      hospatalSleShow: 'true',
+      officeSleShow: 'true' };
+
+  },
+  onLoad: function onLoad() {
 
   },
   methods: {
@@ -58,6 +93,37 @@ var _default =
       console.log(1);
       console.log('picker发送选择改变，携带值为', e.target.value);
       this.index2 = e.target.value;
+    },
+    // 手动输入
+    handImport: function handImport() {
+      console.log(this.hospatalShow);
+      // console.log(this.hospatalShow === 'false')
+      // hospatalShow   医院输入框
+      // officeShow   医院选择框
+      if (this.hospatalShow === 'false') {
+        this.handImportHtml = '选择填写';
+        this.hospatalShow = "true";
+        this.hospatalSleShow = "flase";
+      } else {
+        this.handImportHtml = '手动填写';
+        this.hospatalShow = "false";
+        this.hospatalSleShow = "true";
+      }
+    },
+    handImportOffce: function handImportOffce() {
+      // officeSleShow   科室选择框
+      // officeShow   科室输入框
+      // handImportHtmlOffce 
+      console.log(this.officeShow);
+      if (this.officeShow === 'false') {
+        this.handImportHtmlOffce = '选择填写';
+        this.officeShow = "true";
+        this.officeSleShow = "flase";
+      } else {
+        this.handImportHtmlOffce = '手动填写';
+        this.officeShow = "false";
+        this.officeSleShow = "true";
+      }
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 

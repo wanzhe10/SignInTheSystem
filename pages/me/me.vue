@@ -1,7 +1,11 @@
 <template>
 	<view class="page">
 		<view class="face-wapper">
-			<image src="../../static/logo.png" class="face"></image>
+			<image 
+			src="../../static/logo.png" 
+			class="face"
+			@longpress="faceClick"
+			></image>
 		</view>
 		<view class="info-list">
 			<!-- 我参与的签到 -->
@@ -51,6 +55,16 @@
 			}
 		},
 		methods: {
+			faceClick(){
+				uni.showActionSheet({
+					itemList:['下载图片','aaa','zzz'],
+					success(res) {
+						if(res.tapIndex == 0){
+							console.log('下载')
+						}
+					}
+				})
+			}
 			
 		}
 	}
@@ -62,7 +76,6 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	
 	margin-top: 120upx;
 	margin-bottom: 120upx;
 }
@@ -70,6 +83,8 @@
 .face {
 	width: 160upx;
 	height: 160upx;
+	border-radius: 50%;
+	overflow: hidden;
 }
 /* 头像 end */
 

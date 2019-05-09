@@ -1,19 +1,27 @@
 
-.contant {
-	/* display: flex; */
-	/* align-items: center; */
-	/* justify-content: center; */
+.contant{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
 }
 .signIconBox {
 	text-align: center;
 }
-.logo {
-	height: 200rpx;
-	width: 200rpx;
-	margin-top: 200rpx;
-}
 .title {
 	font-size: 36rpx;
 	color: #8f8f94;
+}
+.sign-font{
+	font-size: 18px;
+	font-weight: bold;
 }
 

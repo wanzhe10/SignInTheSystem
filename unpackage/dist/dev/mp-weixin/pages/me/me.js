@@ -8,7 +8,11 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
+//
 //
 //
 //
@@ -60,7 +64,18 @@ var _default =
 
 
   },
-  methods: {} };exports.default = _default;
+  methods: {
+    faceClick: function faceClick() {
+      uni.showActionSheet({
+        itemList: ['下载图片', 'aaa', 'zzz'],
+        success: function success(res) {
+          if (res.tapIndex == 0) {
+            console.log('下载');
+          }
+        } });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 

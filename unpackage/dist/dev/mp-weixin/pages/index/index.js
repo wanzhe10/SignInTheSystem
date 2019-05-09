@@ -21,7 +21,8 @@ var _default =
 {
   data: function data() {
     return {
-      title: 'Hello' };
+      title: 'Hello',
+      logoHttp: '../../static/signIconUp.png' };
 
   },
   onLoad: function onLoad() {
@@ -29,6 +30,16 @@ var _default =
   },
   methods: {
     signTo: function signTo() {
+
+    },
+    // 手指按下
+    signTouStar: function signTouStar() {
+      this.logoHttp = '../../static/signIconDown.png';
+      // this.logoHttp = '../../static/logo.png';
+      console.log(1);
+    },
+    signTouEnd: function signTouEnd() {
+      this.logoHttp = '../../static/signIconUp.png';
       uni.navigateTo({
         url: '../massage/massage' });
 

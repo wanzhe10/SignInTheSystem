@@ -21,8 +21,9 @@
 	-webkit-flex-direction: row;
 	    -ms-flex-direction: row;
 	        flex-direction: row;
-	padding:20rpx;
-	margin-bottom:30rpx;
+	padding: 20rpx;
+	margin-bottom: 30rpx;
+	font-size: 18px;
 }
 .page-font {
 	width: 30%;
@@ -33,12 +34,22 @@ input {
 	/* height: 80upx; */
 	/* border: 1px solid #ccc; */
 	display: inline-block;
-	line-height: 80rpx;
+	/* line-height: 80upx; */
 	border-radius: 8px;
-	font-size: 16px;
+	font-size: 18px;
+	padding-left: 20rpx;
 }
 .page-button {
 	/* width: 400upx; */
 	margin-top: 200rpx;
+}
+.handImportHtml {
+	font-size: 14px;
+	color: #007aff;
+	margin-bottom: 30rpx;
+	margin-left: 20rpx;
+}
+.page-font-hospatal {
+	font-size: 18px;
 }
 

@@ -57,6 +57,20 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* 头像 start */
 .face-wapper {
 	display: -webkit-box;
@@ -72,13 +86,14 @@
 	-webkit-justify-content: center;
 	    -ms-flex-pack: center;
 	        justify-content: center;
-	
 	margin-top: 120rpx;
 	margin-bottom: 120rpx;
 }
 .face {
 	width: 160rpx;
 	height: 160rpx;
+	border-radius: 50%;
+	overflow: hidden;
 }
 /* 头像 end */
 .item-wapper {
