@@ -8,7 +8,9 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
 //
 //
 //
@@ -64,18 +66,23 @@ var _default =
 
 
   },
-  methods: {
-    faceClick: function faceClick() {
-      uni.showActionSheet({
-        itemList: ['下载图片', 'aaa', 'zzz'],
-        success: function success(res) {
-          if (res.tapIndex == 0) {
-            console.log('下载');
-          }
-        } });
+  onLoad: function onLoad(e) {
 
-    } } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
+  },
+  methods: {
+    // 点击图片出来上拉框
+
+    // faceClick(){
+    // 	uni.showActionSheet({
+    // 		itemList:['下载图片','aaa','zzz'],
+    // 		success(res) {
+    // 			if(res.tapIndex == 0){
+    // 				console.log('下载')
+    // 			}
+    // 		}
+    // 	})
+    // }
+  } };exports.default = _default;
 
 /***/ }),
 

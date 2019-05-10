@@ -1,11 +1,13 @@
 <template>
 	<view class="page">
 		<view class="face-wapper">
-			<image 
+			<!-- <image 
 			src="../../static/logo.png" 
 			class="face"
 			@longpress="faceClick"
-			></image>
+			></image> -->
+			<open-data type="userAvatarUrl" class="face" ></open-data>
+
 		</view>
 		<view class="info-list">
 			<!-- 我参与的签到 -->
@@ -54,17 +56,22 @@
 				
 			}
 		},
+		onLoad(e) {
+
+		},
 		methods: {
-			faceClick(){
-				uni.showActionSheet({
-					itemList:['下载图片','aaa','zzz'],
-					success(res) {
-						if(res.tapIndex == 0){
-							console.log('下载')
-						}
-					}
-				})
-			}
+			// 点击图片出来上拉框
+			
+			// faceClick(){
+			// 	uni.showActionSheet({
+			// 		itemList:['下载图片','aaa','zzz'],
+			// 		success(res) {
+			// 			if(res.tapIndex == 0){
+			// 				console.log('下载')
+			// 			}
+			// 		}
+			// 	})
+			// }
 			
 		}
 	}
