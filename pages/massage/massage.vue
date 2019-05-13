@@ -6,45 +6,16 @@
 			</view>
 			<view class="page-item page-block">
 				<view class="page-font">所在医院：</view>
-				<block v-if="hospatalSleShow =='true'">
-					<navigator url="../search/search">
-						<view class="page-font-hospatal">
-							选择我
-						</view>
-					</navigator>
-				</block>
-				<block v-if="hospatalShow === 'true'" class="page-item">
-					<input type="text" value="" style="width: 65%;" placeholder="请输入医院" />
-				</block>
-			</view>
-			<view @click.native="handImport" v-html="handImportHtml" class="handImportHtml">
-			</view>
-
-
-			<view class="page-item page-block">
-				<view class="page-font">所在科室：</view>
-				<block v-if="officeSleShow === 'true'">
-					<navigator url="../search/search">
-						<view class="page-font-hospatal">
-							选择我
-						</view>
-					</navigator>
-				</block>
-				<block v-if="officeShow == 'true'" class="page-item">
-					<input type="text" value="" style="width: 65%;" placeholder="请输入医院" />
-				</block>
-			</view>
-			<view @click="handImportOffce" v-html="handImportHtmlOffce" class="handImportHtml">
-			</view>
-			<!-- 	<view class="page-item page-block">
-				<view class="page-font">所在科室：</view>
-				<picker @change="bindPickerChange2" :value="index2" :range="array">
-					<view class="uni-input">{{array[index2]}}</view>
+				<picker mode="multiSelector" @columnchange="bindMultiPickerColumnChange" :value="multiIndex" :range="multiArray">
+					<view class="uni-input">{{multiArray[0][multiIndex[0]]}}</view>
 				</picker>
-			</view> -->
-			<view class="page-item page-block">
-				<view class="page-font">联系电话：</view><input type="number" maxlength="11" value="" />
 			</view>
+			<view class="page-item page-block">
+				<view class="page-font">所在科室：</view>
+			</view>
+		</view>
+		<view class="page-item page-block">
+			<view class="page-font">联系电话：</view><input type="number" maxlength="11" value="" />
 		</view>
 		<button type="primary" class="page-button" @click="succeed">确定</button>
 	</view>
@@ -54,71 +25,147 @@
 	export default {
 		data() {
 			return {
-				array: ['中国', '美国', '巴西', '日本'],
-				index: 0,
-				index2: 0,
-				hospatalShow: 'false',
-				officeShow: 'false',
-				handImportHtml: '手动填写',
-				handImportHtmlOffce: '手动填写',
-				hospatalSleShow: 'true',
-				officeSleShow: 'true'
+				multiIndex: [0, 0, 0],
+				multiArray: [
+					['无脊柱动物', '脊柱动物'],
+					['扁性动物', '线形动物', '环节动物', '软体动物', '节肢动物'],
+					['猪肉绦虫', '吸血虫'],
+					['无脊柱动物', '脊柱动物'],
+
+				],
+				province: '', //存放省的数组如：['广东省'，'湖南省',````]，arr类型
+				cityList: '', //放某省内的市如：{'广东省':['广州市'，'深圳市'],'北京市'：['北京市','什么市']}，obj类型
+				countyHospatel: '', //医院
 			}
 		},
 		onLoad() {
+			// this.cityListHostpatel();
+		
+					var that = this;
+						var serverUrl = that.serverUrl
+		// 省-市-医院 三级列表数据查询接口
+				uni.request({
+					url: serverUrl + '/city/selectByCityLevel',
+					method: "GET",
+					success: (res) => {
+						// debugger
+						console.log(res.data);
+						if (res.data.code == 20000) {
+							that.result = res.data.result;
+							 // that.result=JSON.parse(JSON.stringify(res.data.result));
+							console.log(that.result)
+							// var oneResult = that.result
+							// for (let i = 0; i < oneResult.length; i++) {
+							// 	console.log(oneResult[i].cityName)
+							// }
+							// var myArray= new Array()
+							
+							// console.log(res.data.result);
+						}
+					}
+				});
+			// 科室两级联动列表
+			// uni.request({
+			// 		url: serverUrl + '/branch/multistage',
+			// 		method: "GET",
+			// 		success: (res) => {
+			// 			// debugger
+			// 			console.log(res.data);
+			// 			if (res.data.status == 200) {
+			// 				// that.carouseList = res.data.data;
+			// 			}
+			// 		}
+			// 	});
 
 		},
 		methods: {
+	// 			cityListHostpatel(){
+	// 				var that = this;
+	// 				var serverUrl = that.serverUrl
+	// // 省-市-医院 三级列表数据查询接口
+	// 		uni.request({
+	// 			url: serverUrl + '/city/selectByCityLevel',
+	// 			method: "GET",
+	// 			success: (res) => {
+	// 				// debugger
+	// 				// console.log(res.data);
+	// 				if (res.data.code == 20000) {
+	// 					that.result = res.data.result;
+	// 					console.log(that.result)
+	// 					// console.log(res.data.result);
+	// 				}
+	// 			}
+	// 		});
+	// 			},
+		
 			succeed() {
 				uni.navigateTo({
 					url: "../succeed/succeed"
 				})
 			},
-			bindPickerChange: function(e) {
-				console.log(1)
-				console.log('picker发送选择改变，携带值为', e.target.value)
-				this.index = e.target.value
-			},
-			bindPickerChange2: function(e) {
-				console.log(1)
-				console.log('picker发送选择改变，携带值为', e.target.value)
-				this.index2 = e.target.value
-			},
-			// 手动输入
-			handImport() {
-				console.log(this.hospatalShow)
-				// console.log(this.hospatalShow === 'false')
-				// hospatalShow   医院输入框
-				// officeShow   医院选择框
-				if (this.hospatalShow === 'false') {
-					this.handImportHtml = '选择填写'
-					this.hospatalShow = "true"
-					this.hospatalSleShow = "flase"
-				} else {
-					this.handImportHtml = '手动填写'
-					this.hospatalShow = "false"
-					this.hospatalSleShow = "true"
+			bindMultiPickerColumnChange: function(e) {
+				// var that = this;
+				console.log(this.result);
+				console.log('修改的列为：' + e.detail.column + '，值为：' + e.detail.value)
+				this.multiIndex[e.detail.column] = e.detail.value
+				switch (e.detail.column) {
+					case 0:
+						switch (this.multiIndex[0]) {
+							case 0:
+								this.multiArray[1] = ['扁性动物', '线形动物', '环节动物', '软体动物', '节肢动物']
+								this.multiArray[2] = ['猪肉绦虫', '吸血虫']
+								break
+							case 1:
+								this.multiArray[1] = ['鱼', '两栖动物', '爬行动物']
+								this.multiArray[2] = ['鲫鱼', '带鱼']
+								break
+						}
+						this.multiIndex[1] = 0
+						this.multiIndex[2] = 0
+						break
+					case 1:
+						switch (this.multiIndex[0]) {
+							case 0:
+								switch (this.multiIndex[1]) {
+									case 0:
+										this.multiArray[2] = ['猪肉绦虫', '吸血虫']
+										break
+									case 1:
+										this.multiArray[2] = ['蛔虫']
+										break
+									case 2:
+										this.multiArray[2] = ['蚂蚁', '蚂蟥']
+										break
+									case 3:
+										this.multiArray[2] = ['河蚌', '蜗牛', '蛞蝓']
+										break
+									case 4:
+										this.multiArray[2] = ['昆虫', '甲壳动物', '蛛形动物', '多足动物']
+										break
+								}
+								break
+							case 1:
+								switch (this.multiIndex[1]) {
+									case 0:
+										this.multiArray[2] = ['鲫鱼', '带鱼']
+										break
+									case 1:
+										this.multiArray[2] = ['青蛙', '娃娃鱼']
+										break
+									case 2:
+										this.multiArray[2] = ['蜥蜴', '龟', '壁虎']
+										break
+								}
+								break
+						}
+						this.multiIndex[2] = 0
+						break
 				}
+				this.$forceUpdate()
 			},
-			handImportOffce() {
-				// officeSleShow   科室选择框
-				// officeShow   科室输入框
-				// handImportHtmlOffce 
-				console.log(this.officeShow)
-				if (this.officeShow === 'false') {
-					this.handImportHtmlOffce = '选择填写'
-					this.officeShow = "true"
-					this.officeSleShow = "flase"
-				} else {
-					this.handImportHtmlOffce = '手动填写'
-					this.officeShow = "false"
-					this.officeSleShow = "true"
-				}
-			}
-		},
 
 
-
+		}
 	}
 </script>
 
