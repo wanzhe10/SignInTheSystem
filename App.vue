@@ -38,4 +38,7 @@
 		height: 1px;
 		background-color: #DBDBDA;
 	}
+	.uni-picker .uni-picker-item{
+		font-size: 12px !important;
+	}
 </style>

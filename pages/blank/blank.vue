@@ -6,8 +6,8 @@
 			</view>
 			<view class="page-item page-block">
 				<view class="page-font">所在医院：</view>
-				<picker mode="multiSelector" @columnchange="bindMultiPickerColumnChange" :value="multiIndex" :range="multiArray">
-					<view class="uni-input">{{multiArray[0][multiIndex[0]]}}{{multiArray[1][multiIndex[1]]}}{{multiArray[2][multiIndex[2]]}}</view>
+				<picker mode="multiSelector" @columnchange="bindMultiPickerColumnChange" :value="multiIndex3" :range="multiArray3">
+					<view class="uni-input"> aaaa{{multiArray3[0][multiIndex3[0]]}}{{multiArray3[1][multiIndex3[1]]}}{{multiArray3[2][multiIndex3[2]]}}</view>
 				</picker>
 			</view>
 			<view class="page-item page-block">
@@ -20,182 +20,131 @@
 		<button type="primary" class="page-button" @click="succeed">确定</button>
 	</view>
 </template>
-
+<!-- https://blog.csdn.net/weixin_43743956/article/details/85031747 -->
 <script>
 	export default {
 		data() {
 			return {
-				multiIndex: [0, 0, 0],
-				multiArray: [
-					['无脊柱动物', '脊柱动物'],
-					['扁性动物', '线形动物', '环节动物', '软体动物', '节肢动物'],
-					['猪肉绦虫', '吸血虫'],
-					['无脊柱动物', '脊柱动物'],
-
-				],
+				multiIndex3: [0, 0, 0],
+				multiArray3: [
+					[],
+					[],
+					[]
+				], //这里multiArray3是传进多列picker的数组
 				province: '', //存放省的数组如：['广东省'，'湖南省',````]，arr类型
 				cityList: '', //放某省内的市如：{'广东省':['广州市'，'深圳市'],'北京市'：['北京市','什么市']}，obj类型
 				countyHospatel: '', //医院
 			}
 		},
 		onLoad() {
-			var that = this;
-			var serverUrl = that.serverUrl
-			// 省-市-医院 三级列表数据查询接口
-			uni.request({
-				url: serverUrl + '/city/selectByCityLevel',
-				method: "GET",
-				success: (res) => {
-					// debugger
-					console.log(res.data);
-					if (res.data.code == 20000) {
-						that.result = res.data.result;
-						// that.result=JSON.parse(JSON.stringify(res.data.result));
-						// console.log(that.result)
-						var oneResult = that.result
-						let province = []; //['广东省','广西省','湖南省']
-						let cityList = {}; //{'广东省':['广州市'，'深圳市']}放某省内的市
-						let countyList = {}; //{'广州市':['番禺区'，'增城区']}放某区市的区
-						// console.log(province)
-						res.data.result.forEach((val)=>{
-						  if(val.cityName!=''){
-						    province.push(val.cityName);
-							// console.log(province) //省
-						    if(val.cityList!=''){
-						      let arr=[];
-						      val.sonCityList.forEach(val1=>{
-						        arr.push(val1.cityName);
-								// console.log(arr)
-						        if(val1.countyList!=''){
-						          let arr2=[]
-						          val1.cityHospital.forEach(val2=>{
-						            arr2.push(val2.hospitalName)
-									// console.log(arr2)
-						          })
-						          countyList[val1.cityName]=arr2
-								  console.log(countyList)
-						        }
-						      })
-						      cityList[val.cityName]=arr; 
-							  // console.log(cityList) //市
-						    }
-						  }
-						})
-					}
-				}
-			})
+			this.getAddress();
 		},
 		methods: {
-			// 			cityListHostpatel(){
-			// 				var that = this;
-			// 				var serverUrl = that.serverUrl
-			// // 省-市-医院 三级列表数据查询接口
-			// 		uni.request({
-			// 			url: serverUrl + '/city/selectByCityLevel',
-			// 			method: "GET",
-			// 			success: (res) => {
-			// 				// debugger
-			// 				// console.log(res.data);
-			// 				if (res.data.code == 20000) {
-			// 					that.result = res.data.result;
-			// 					console.log(that.result)
-			// 					// console.log(res.data.result);
-			// 				}
-			// 			}
-			// });
-			// },
-
-			bindMultiPickerColumnChange: function(e) {
-				let province = []; //['广东省','广西省','湖南省']
-				let cityList = {}; //{'广东省':['广州市'，'深圳市']}放某省内的市
-				let countyList = {}; //{'广州市':['番禺区'，'增城区']}放某区市的区
-				if (res.data.level == 'success') { //获取自主传入的地址
-					res.data.data.forEach((val) => {
-						if (val.name != '') {
-							province.push(val.name);
-							if (val.cityList != '') {
-								let arr = [];
-								val.cityList.forEach(val1 => {
-									arr.push(val1.name);
-									if (val1.areaList != '') {
-										let arr2 = []
-										val1.areaList.forEach(val2 => {
-											arr2.push(val2.name)
-										})
-										countyList[val1.name] = arr2
-									}
-								})
-								cityList[val.name] = arr;
-							}
+			bindMultiPickerColumnChange(e) {
+				
+				let val = e.target.value; //每一项改变时，小程序组建传来的当列选中项的index
+				console.log(val)
+				switch (e.target.column) {
+					case 0: //第一列改变时
+						let arr = this.getArr(this.province[val], this.cityList)
+						this.$set(this.multiArray3, 1, []) //先清空multiArray3的第1项（其实这一步没必要，只是为了逻辑的完整）
+						this.$set(this.multiArray3, 1, arr); //设置第二列数据
+						let arr2 = this.getArr(arr[0], this.countyList); //从第二列拿出第一项中，在countyList中查找并设置第三列的数组。这么做时为了在选择第一列时，第二列也相应显示出了相应的市，并且第三列联动默认有显示
+						if (arr2) {
+							this.$set(this.multiArray3, 2, arr2); //设置第三组数据
+						} else {
+							this.$set(this.multiArray3, 2, ['-']);
 						}
-					})
+						this.$set(this.multiIndex3, 0, val); //设置当前显示的下标
+						this.$set(this.multiIndex3, 1, 0);
+						this.$set(this.multiIndex3, 2, 0); //又来吐槽一下小程序，真是糟糕的设计
+						break;
+					case 1:
+						let arr3 = this.getArr(this.multiArray3[1][val], this.countyList);
+						this.$set(this.multiArray3, 2, [])
+						if (arr3) {
+							this.$set(this.multiArray3, 2, arr3)
+						} else {
+							this.$set(this.multiArray3, 2, ['-']);
+						}
+						this.$set(this.multiIndex3, 1, val)
+						this.$set(this.multiIndex3, 2, 0);
+						break;
 				}
-
-
-
-
-				// var that = this;
-				// console.log(this.result);
-				// console.log('修改的列为：' + e.detail.column + '，值为：' + e.detail.value)
-				// this.multiIndex[e.detail.column] = e.detail.value
-				// switch (e.detail.column) {
-				// 	case 0:
-				// 		switch (this.multiIndex[0]) {
-				// 			case 0:
-				// 				this.multiArray[1] = ['扁性动物', '线形动物', '环节动物', '软体动物', '节肢动物']
-				// 				this.multiArray[2] = ['猪肉绦虫', '吸血虫']
-				// 				break
-				// 			case 1:
-				// 				this.multiArray[1] = ['鱼', '两栖动物', '爬行动物']
-				// 				this.multiArray[2] = ['鲫鱼', '带鱼']
-				// 				break
-				// 		}
-				// 		this.multiIndex[1] = 0
-				// 		this.multiIndex[2] = 0
-				// 		break
-				// 	case 1:
-				// 		switch (this.multiIndex[0]) {
-				// 			case 0:
-				// 				switch (this.multiIndex[1]) {
-				// 					case 0:
-				// 						this.multiArray[2] = ['猪肉绦虫', '吸血虫']
-				// 						break
-				// 					case 1:
-				// 						this.multiArray[2] = ['蛔虫']
-				// 						break
-				// 					case 2:
-				// 						this.multiArray[2] = ['蚂蚁', '蚂蟥']
-				// 						break
-				// 					case 3:
-				// 						this.multiArray[2] = ['河蚌', '蜗牛', '蛞蝓']
-				// 						break
-				// 					case 4:
-				// 						this.multiArray[2] = ['昆虫', '甲壳动物', '蛛形动物', '多足动物']
-				// 						break
-				// 				}
-				// 				break
-				// 			case 1:
-				// 				switch (this.multiIndex[1]) {
-				// 					case 0:
-				// 						this.multiArray[2] = ['鲫鱼', '带鱼']
-				// 						break
-				// 					case 1:
-				// 						this.multiArray[2] = ['青蛙', '娃娃鱼']
-				// 						break
-				// 					case 2:
-				// 						this.multiArray[2] = ['蜥蜴', '龟', '壁虎']
-				// 						break
-				// 				}
-				// 				break
-				// 		}
-				// 		this.multiIndex[2] = 0
-				// 		break
-				// }
-				// this.$forceUpdate()
 			},
+			getArr(address, arr) { //返回一个选中项后，对应的下级数组，例如，选中了广东省，那么就从this.cityList中找出key为广东省的value ：['广州市'，'深圳市']
+				for (let p in arr) {
+					if (address == p) {
+						return arr[p]
+					}
+				}
+			},
+			getAddress() { //获取传入的数据
+				let province = []; //['广东省','广西省','湖南省']
+				var that = this;
+				var serverUrl = that.serverUrl
+				// 省-市-医院 三级列表数据查询接口
+				uni.request({
+					url: serverUrl + '/city/selectByCityLevel',
+					method: "GET",
+					success: (res) => {
+						// debugger
+						// console.log(res.data);
+						if (res.data.code == 20000) {
+							that.result = res.data.result;
+							// that.result=JSON.parse(JSON.stringify(res.data.result));
+							// console.log(that.result)
+							var oneResult = that.result
+							let province = []; //['广东省','广西省','湖南省']
+							let cityList = {}; //{'广东省':['广州市'，'深圳市']}放某省内的市
+							let countyList = {}; //{'广州市':['番禺区'，'增城区']}放某区市的区
+							// console.log(province)
+							res.data.result.forEach((val) => {
+								if (val.cityName != '') {
+									province.push(val.cityName);
+									// console.log(province)
+									if (val.cityList != '') {
+										let arr = [];
+										val.sonCityList.forEach(val1 => {
+											arr.push(val1.cityName);
+											// console.log(arr)
+											if (val1.countyList != '') {
+												let arr2 = []
+												val1.cityHospital.forEach(val2 => {
+													arr2.push(val2.hospitalName)
 
+												})
+												// console.log(arr2)
+												countyList[val1.cityName] = arr2
+												// console.log(countyList)
+											}
+										})
+										cityList[val.cityName] = arr;
+									}
 
-		}
+								}
+							})
+							this.province = province;
+							this.cityList = cityList;
+							this.countyList = countyList;
+							this.multiArray3[0] = this.province
+							this.multiArray3[1] = this.getArr(this.province[0], this.cityList);
+							this.multiArray3[2] = this.getArr(this.multiArray3[1][0], this.countyList);
+							console.log(this.province)
+							console.log(this.cityList)
+							console.log(this.countyList)
+						}
+					},
+
+				})
+
+			}
+
+		},
+
+		// mounted() {
+		//   this.getAddress()
+		// },
 	}
 </script>
 
@@ -247,4 +196,5 @@
 	.page-font-hospatal {
 		font-size: 18px;
 	}
+	
 </style>
