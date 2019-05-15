@@ -31,178 +31,143 @@
 //
 //
 //
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
-      multiIndex: [0, 0, 0],
-      multiArray: [
-      ['无脊柱动物', '脊柱动物'],
-      ['扁性动物', '线形动物', '环节动物', '软体动物', '节肢动物'],
-      ['猪肉绦虫', '吸血虫'],
-      ['无脊柱动物', '脊柱动物']],
+      multiIndex3: [0, 0, 0],
+      multiArray3: [
+      [{ "name": "" }],
+      [{ "name": "" }],
+      [{ "name": "" }]],
 
+      //这里multiArray3是传进多列picker的数组
+      requestData: [],
+      provinceList: {}, //存放省的数组如：['广东省'，'湖南省',````]，arr类型
+      cityList: {}, //放某省内的市如：{'广东省':['广州市'，'深圳市'],'北京市'：['北京市','什么市']}，obj类型
+      countyHospatelList: {}, //医院 
+      hospitalList: [{ "name": "321" }] };
 
-      province: '', //存放省的数组如：['广东省'，'湖南省',````]，arr类型
-      cityList: '', //放某省内的市如：{'广东省':['广州市'，'深圳市'],'北京市'：['北京市','什么市']}，obj类型
-      countyHospatel: '' //医院
-    };
   },
   onLoad: function onLoad() {
-    var that = this;
-    var serverUrl = that.serverUrl;
-    // 省-市-医院 三级列表数据查询接口
-    uni.request({
-      url: serverUrl + '/city/selectByCityLevel',
-      method: "GET",
-      success: function success(res) {
-        // debugger
-        console.log(res.data);
-        if (res.data.code == 20000) {
-          that.result = res.data.result;
-          // that.result=JSON.parse(JSON.stringify(res.data.result));
-          // console.log(that.result)
-          var oneResult = that.result;
-          var province = []; //['广东省','广西省','湖南省']
-          var cityList = {}; //{'广东省':['广州市'，'深圳市']}放某省内的市
-          var countyList = {}; //{'广州市':['番禺区'，'增城区']}放某区市的区
-          // console.log(province)
-          res.data.result.forEach(function (val) {
-            if (val.cityName != '') {
-              province.push(val.cityName);
-              // console.log(province) //省
-              if (val.cityList != '') {
-                var arr = [];
-                val.sonCityList.forEach(function (val1) {
-                  arr.push(val1.cityName);
-                  // console.log(arr)
-                  if (val1.countyList != '') {
-                    var arr2 = [];
-                    val1.cityHospital.forEach(function (val2) {
-                      arr2.push(val2.hospitalName);
-                      // console.log(arr2)
-                    });
-                    countyList[val1.cityName] = arr2;
-                    console.log(countyList);
-                  }
-                });
-                cityList[val.cityName] = arr;
-                // console.log(cityList) //市
-              }
-            }
-          });
-        }
-      } });
-
+    this.getAddress();
+    // this.bbb = this.multiArray3[1][this.multiIndex3[1]]
+    // this.ccc = this.multiArray3[2][this.multiIndex3[2]]
   },
   methods: {
-    // 			cityListHostpatel(){
-    // 				var that = this;
-    // 				var serverUrl = that.serverUrl
-    // // 省-市-医院 三级列表数据查询接口
-    // 		uni.request({
-    // 			url: serverUrl + '/city/selectByCityLevel',
-    // 			method: "GET",
-    // 			success: (res) => {
-    // 				// debugger
-    // 				// console.log(res.data);
-    // 				if (res.data.code == 20000) {
-    // 					that.result = res.data.result;
-    // 					console.log(that.result)
-    // 					// console.log(res.data.result);
-    // 				}
-    // 			}
-    // });
-    // },
-
+    tapTest: function tapTest() {
+      console.log("123");
+    },
     bindMultiPickerColumnChange: function bindMultiPickerColumnChange(e) {
-      var province = []; //['广东省','广西省','湖南省']
-      var cityList = {}; //{'广东省':['广州市'，'深圳市']}放某省内的市
-      var countyList = {}; //{'广州市':['番禺区'，'增城区']}放某区市的区
-      if (res.data.level == 'success') {//获取自主传入的地址
-        res.data.data.forEach(function (val) {
-          if (val.name != '') {
-            province.push(val.name);
-            if (val.cityList != '') {
-              var arr = [];
-              val.cityList.forEach(function (val1) {
-                arr.push(val1.name);
-                if (val1.areaList != '') {
-                  var arr2 = [];
-                  val1.areaList.forEach(function (val2) {
-                    arr2.push(val2.name);
-                  });
-                  countyList[val1.name] = arr2;
-                }
-              });
-              cityList[val.name] = arr;
-            }
+      var hospitalId;
+      switch (e.target.column) {
+        case 0: //第一列改变时
+          var arr = this.provinceList[this.multiArray3[0][e.target.value].id];
+          this.$set(this.multiArray3, 1, []); //先清空multiArray3的第1项（其实这一步没必要，只是为了逻辑的完整）
+          this.$set(this.multiArray3, 1, arr); //设置第二列数据
+          var arr2 = this.cityList[this.provinceList[this.multiArray3[0][e.target.value].id][0].id];
+          hospitalId = arr2[0].id;
+          if (arr2) {
+            this.$set(this.multiArray3, 2, arr2); //设置第三组数据
+          } else {
+            this.$set(this.multiArray3, 2, ['-']);
           }
-        });
+          this.$set(this.multiIndex3, 0, e.target.value); //设置当前显示的下标
+          this.$set(this.multiIndex3, 1, 0);
+          this.$set(this.multiIndex3, 2, 0); //又来吐槽一下小程序，真是糟糕的设计
+          break;
+        case 1:
+          // let arr3 = this.getArr(this.multiArray3[1][val], this.countyHospatel);
+          var arr3 = this.cityList[this.multiArray3[1][e.target.value].id];
+          hospitalId = arr3[0].id;
+          this.$set(this.multiArray3, 2, []);
+          if (arr3) {
+            this.$set(this.multiArray3, 2, arr3);
+          } else {
+            this.$set(this.multiArray3, 2, ['-']);
+          }
+          this.$set(this.multiIndex3, 1, e.target.value);
+          this.$set(this.multiIndex3, 2, 0);
+          // console.log('第二列')
+          break;
+        case 2:
+          // this.$set(this.multiIndex3, 0, val); //设置当前显示的下标
+          // this.$set(this.multiIndex3, 1, val)
+          hospitalId = this.multiArray3[2][e.target.value].id;
+          this.$set(this.multiIndex3, 2, e.target.value);
+          break;}
+
+      console.log(hospitalId);
+
+    },
+    getArr: function getArr(address, arr) {//返回一个选中项后，对应的下级数组，例如，选中了广东省，那么就从this.cityList中找出key为广东省的value ：['广州市'，'深圳市']
+      for (var p in arr) {
+        if (address == p) {
+          return arr[p];
+        }
       }
+    },
+    getAddress: function getAddress() {var _this = this; //获取传入的数据
+      var province = []; //['广东省','广西省','湖南省']
+      var that = this;
+      var serverUrl = that.serverUrl;
+      // 省-市-医院 三级列表数据查询接口
+      uni.request({
+        url: serverUrl + '/city/selectByCityLevel',
+        method: "GET",
+        success: function success(res) {
+          if (res.data.code == 20000) {
+            that.result = res.data.result;
+            var oneResult = that.result;
+            _this.requestData = oneResult;
+            // console.log(oneResult)
+            var _province = []; //['广东省','广西省','湖南省']
+            var cityArr = []; //{'广东省':['广州市'，'深圳市']}放某省内的市
+            var countyHospatelArr = []; //{'广州市':['番禺区'，'增城区']}放某区市的区
+            res.data.result.forEach(function (val) {
+              if (val.cityName != '') {
+                _province.push({ "id": val.id, "name": val.cityName });
+                if (val.cityList != '') {
+                  var arr = [];
+                  val.sonCityList.forEach(function (val1) {
+                    arr.push({ "id": val1.id, "name": val1.cityName });
+                    if (val1.countyHospatel != '') {
+                      var hospitalEntity = {};
+                      var arr2 = [];
+                      val1.cityHospital.forEach(function (val2) {
+                        arr2.push({ "id": val2.hospitalId, "name": val2.hospitalName });
+                      });
+                      countyHospatelArr = arr2;
+                      _this.cityList[val1.id] = arr2;
+                    }
+                  });
+                  cityArr = arr;
+                  _this.provinceList[val.id] = arr;
+                }
+              }
+            });
+            _this.multiArray3[0] = _province;
+            _this.multiArray3[1] = _this.provinceList[_province[0].id];
+            _this.multiArray3[2] = _this.cityList[_this.provinceList[_province[0].id][0].id];
+          }
+        } });
 
 
 
+    } }
 
-      // var that = this;
-      // console.log(this.result);
-      // console.log('修改的列为：' + e.detail.column + '，值为：' + e.detail.value)
-      // this.multiIndex[e.detail.column] = e.detail.value
-      // switch (e.detail.column) {
-      // 	case 0:
-      // 		switch (this.multiIndex[0]) {
-      // 			case 0:
-      // 				this.multiArray[1] = ['扁性动物', '线形动物', '环节动物', '软体动物', '节肢动物']
-      // 				this.multiArray[2] = ['猪肉绦虫', '吸血虫']
-      // 				break
-      // 			case 1:
-      // 				this.multiArray[1] = ['鱼', '两栖动物', '爬行动物']
-      // 				this.multiArray[2] = ['鲫鱼', '带鱼']
-      // 				break
-      // 		}
-      // 		this.multiIndex[1] = 0
-      // 		this.multiIndex[2] = 0
-      // 		break
-      // 	case 1:
-      // 		switch (this.multiIndex[0]) {
-      // 			case 0:
-      // 				switch (this.multiIndex[1]) {
-      // 					case 0:
-      // 						this.multiArray[2] = ['猪肉绦虫', '吸血虫']
-      // 						break
-      // 					case 1:
-      // 						this.multiArray[2] = ['蛔虫']
-      // 						break
-      // 					case 2:
-      // 						this.multiArray[2] = ['蚂蚁', '蚂蟥']
-      // 						break
-      // 					case 3:
-      // 						this.multiArray[2] = ['河蚌', '蜗牛', '蛞蝓']
-      // 						break
-      // 					case 4:
-      // 						this.multiArray[2] = ['昆虫', '甲壳动物', '蛛形动物', '多足动物']
-      // 						break
-      // 				}
-      // 				break
-      // 			case 1:
-      // 				switch (this.multiIndex[1]) {
-      // 					case 0:
-      // 						this.multiArray[2] = ['鲫鱼', '带鱼']
-      // 						break
-      // 					case 1:
-      // 						this.multiArray[2] = ['青蛙', '娃娃鱼']
-      // 						break
-      // 					case 2:
-      // 						this.multiArray[2] = ['蜥蜴', '龟', '壁虎']
-      // 						break
-      // 				}
-      // 				break
-      // 		}
-      // 		this.multiIndex[2] = 0
-      // 		break
-      // }
-      // this.$forceUpdate()
-    } } };exports.default = _default;
+
+
+  // mounted() {
+  //   this.getAddress()
+  // },
+};exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),

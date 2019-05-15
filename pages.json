@@ -42,10 +42,6 @@
             "path" : "pages/myMes/myMes",
             "style" : {}
         }
-        ,{
-            "path" : "pages/search/search",
-            "style" : {}
-        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
