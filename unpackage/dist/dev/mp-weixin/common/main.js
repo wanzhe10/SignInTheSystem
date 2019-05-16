@@ -12,6 +12,12 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 {
   onLaunch: function onLaunch() {
     console.log('App Launch');
+    // uni.authorize({
+    //     scope: 'scope.userInfo',
+    //     success() {
+    //         uni.getLocation()
+    //     }
+    // })
   },
   onShow: function onShow() {
     console.log('App Show');

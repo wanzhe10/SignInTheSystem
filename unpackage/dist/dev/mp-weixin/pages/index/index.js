@@ -17,6 +17,7 @@
 //
 //
 //
+//
 var _default =
 {
   data: function data() {
@@ -26,22 +27,80 @@ var _default =
 
   },
   onLoad: function onLoad() {
+    var that = this;
+    var serverUrl = that.serverUrl;
+    uni.login({
+      provider: 'weixin',
+      success: function success(loginRes) {
+        // console.log(loginRes.code) //向后台发送的code 换取token
+        uni.request({
+          url: serverUrl + '/login/weChat/oauth?code=' + loginRes.code,
+          header: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+            // "token":
+          },
+          success: function success(res) {
+            // console.log(res.data.result)
+            uni.setStorageSync('token', res.data.result); //将 data 存储在本地缓存中指定的 key 中，会覆盖掉原来该 key 对应的内容，这是一个同步接口。
+            // if (res.data.code == 20000) {
+            // 	uni.navigateTo({
+            // 		url: "../succeed/succeed"
+            // 	})
+            // }
+          } });
+
+        // uni.getUserInfo({
+        // 	provider: 'weixin',
+        // 	withCredentials: true,
+        // 	success: function(infoRes) {
+        // 		console.log('用户昵称为：' + infoRes.userInfo.nickname);
+        // 	},
+        // 	fail: function(res) {
+        // 		// 这里res = {"errMsg":"getUserInfo:fail scope unauthorized"}   
+        // 		console.log('res=' + JSON.stringify(res))
+        // 	}
+        // });
+      },
+      fail: function fail(es) {
+        console.log('fail');
+        console.log(es);
+      } });
 
   },
   methods: {
-    signTo: function signTo() {
+    // wxGetUserInfo(res) {
+    // 	if (!res.detail.iv) {
+    // 		uni.showToast({
+    // 			title: "您取消了授权,登录失败",
+    // 			icon: "none"
+    // 		});
+    // 		return false;
+    // 	}
+    // 	console.log('-------用户授权，并获取用户基本信息和加密数据------')
+    // 	console.log(res.detail);
+    // },
 
-    },
     // 手指按下
     signTouStar: function signTouStar() {
       this.logoHttp = '../../static/signIconDown.png';
       // this.logoHttp = '../../static/logo.png';
-      console.log(1);
+
     },
     signTouEnd: function signTouEnd() {
       this.logoHttp = '../../static/signIconUp.png';
-      uni.navigateTo({
-        url: '../massage/massage' });
+      var token = uni.getStorage({ //从本地缓存中异步获取指定 key 对应的内容
+        key: 'token',
+        success: function success(res) {//成功
+          uni.navigateTo({
+            url: "../succeed/succeed" });
+
+        },
+        fail: function fail(res) {//失败
+          uni.navigateTo({
+            url: '../massage/massage' });
+
+        } });
+
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))

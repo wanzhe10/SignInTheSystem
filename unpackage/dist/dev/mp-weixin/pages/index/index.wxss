@@ -1,5 +1,5 @@
 
-.contant{
+.contant {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -20,7 +20,7 @@
 	font-size: 36rpx;
 	color: #8f8f94;
 }
-.sign-font{
+.sign-font {
 	font-size: 18px;
 	font-weight: bold;
 }
