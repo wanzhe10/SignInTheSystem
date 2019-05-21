@@ -1,0 +1,1 @@
+<view class="page contant" bind:__l="__l"><button type="primary" open-type="getUserInfo" withCredentials="true" data-event-opts="{{[['getuserinfo',[['wxGetUserInfo',['$event']]]]]}}" bindgetuserinfo="__e">点击授权</button></view>

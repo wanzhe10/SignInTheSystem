@@ -18,6 +18,7 @@ var _default =
   data: function data() {
     return {};
 
+
   } };exports.default = _default;
 
 /***/ }),

@@ -8,7 +8,10 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
 //
 //
 //
@@ -46,11 +49,49 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 var _default =
 {
   data: function data() {
-    return {};
+    return {
+      name: '',
+      address: '',
+      latitude: '',
+      longitude: '',
+      time: '' };
 
 
   },
-  methods: {} };exports.default = _default;
+  onLoad: function onLoad() {
+    var that = this;
+    uni.chooseLocation({
+      success: function success(res) {
+        that.name = res.name;
+        that.address = res.address;
+        that.latitude = res.latitude;
+        that.longitude = res.longitude;
+        uni.setStorageSync('signLongitude', res.longitude); //经度
+        uni.setStorageSync('signLatitude', res.latitude); //纬度
+      } });
+
+    this.getSystemTime();
+  },
+  methods: {
+    // 获取系统当前时间
+    getSystemTime: function getSystemTime() {
+      var that = this;
+      var date = new Date();
+      var seperator1 = "-";
+      var seperator2 = ":";
+      var month = date.getMonth() + 1;
+      var strDate = date.getDate();
+      if (month >= 1 && month <= 9) {
+        month = "0" + month;
+      }
+      if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+      }
+      that.time = date.getFullYear() + seperator1 + month + seperator1 + strDate +
+      " " + date.getHours() + seperator2 + date.getMinutes() +
+      seperator2 + date.getSeconds();
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 

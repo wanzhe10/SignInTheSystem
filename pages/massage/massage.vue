@@ -63,7 +63,8 @@
 
 				advocateOfficeList: {}, //一级科室
 				hospitalId: '', //医院ID
-				officeId: '' //科室id
+				officeId: '', //科室id
+				token:''
 
 			}
 		},
@@ -103,8 +104,9 @@
 					// console.log(that.signNum)
 					// console.log(that.hospitalId)
 					// console.log(that.officeId)
+				 that.token = uni.getStorageSync('token');
 					uni.request({
-						url: serverUrl + '/memberDetail/insert',
+						url: serverUrl + '/memberDetail/update',
 						method: "POST",
 						data: {
 							memberName: that.signName,
@@ -114,7 +116,7 @@
 						},
 						header: {
 							'Content-Type': 'application/x-www-form-urlencoded',
-							// "token":
+							"token":that.token
 						},
 						success: (res) => {
 							console.log(res)

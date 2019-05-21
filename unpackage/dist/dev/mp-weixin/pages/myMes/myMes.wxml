@@ -1,1 +1,1 @@
-<view bind:__l="__l">二维码</view>
+<view class="page contant" bind:__l="__l"><view class="qrimg"><tki-qrcode class="vue-ref" val="{{val}}" size="{{size}}" unit="{{unit}}" background="{{background}}" foreground="{{foreground}}" pdground="{{pdground}}" icon="{{icon}}" iconSize="{{iconsize}}" lv="{{lv}}" onval="{{onval}}" loadMake="{{loadMake}}" data-ref="qrcode" data-event-opts="{{[['^result',[['qrR']]]]}}" bind:result="__e"></tki-qrcode></view></view>

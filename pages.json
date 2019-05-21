@@ -42,6 +42,10 @@
             "path" : "pages/myMes/myMes",
             "style" : {}
         }
+        ,{
+            "path" : "pages/Authorization/Authorization",
+            "style" : {}
+        }
     ],
 	 "permission": {
     "scope.userLocation": {

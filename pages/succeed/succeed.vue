@@ -21,10 +21,13 @@
 				第2站
 			</view>
 			<view class="hospatalName">
-				北京·民航总医院
+				位置名称：{{name}}
+			</view>
+			<view class="hospatalName">
+				详细地址：{{address}}
 			</view>
 			<view class="succeed-time">
-				2019-08-08
+				{{time}}
 			</view>
 		</view>
 		<navigator url="../myMes/myMes">
@@ -37,10 +40,47 @@
 	export default {
 		data() {
 			return {
+				name: '',
+				address: '',
+				latitude: '',
+				longitude: '',
+				time: ''
 
 			}
 		},
+		onLoad() {
+			var that = this;
+			uni.chooseLocation({
+				success: function(res) {
+					that.name = res.name;
+					that.address = res.address;
+					that.latitude = res.latitude;
+					that.longitude = res.longitude;
+					uni.setStorageSync('signLongitude', res.longitude); //经度
+					uni.setStorageSync('signLatitude', res.latitude); //纬度
+				}
+			});
+			this.getSystemTime();
+		},
 		methods: {
+			// 获取系统当前时间
+			getSystemTime() {
+				var that = this;
+				var date = new Date();
+				var seperator1 = "-";
+				var seperator2 = ":";
+				var month = date.getMonth() + 1;
+				var strDate = date.getDate();
+				if (month >= 1 && month <= 9) {
+					month = "0" + month;
+				}
+				if (strDate >= 0 && strDate <= 9) {
+					strDate = "0" + strDate;
+				}
+				that.time = date.getFullYear() + seperator1 + month + seperator1 + strDate +
+					" " + date.getHours() + seperator2 + date.getMinutes() +
+					seperator2 + date.getSeconds();
+			}
 
 		}
 	}
