@@ -1,35 +1,36 @@
 <template>
 	<view class="page contant">
-		<view class="qrimg">
-			<tki-qrcode ref="qrcode" :val="val" :size="size" :unit="unit" :background="background" :foreground="foreground"
-			 :pdground="pdground" :icon="icon" :iconSize="iconsize" :lv="lv" :onval="onval" :loadMake="loadMake" @result="qrR" />
+		<view class="page-tittle">
+			您的专属信息二维码
 		</view>
-		<!-- <button type="primary" @tap="saveQrcode">保存到图库</button> -->
+		<view class="qrvalBox">
+			<qrcode :val="qrval" :size="qrsize" ref="qrcode"></qrcode>
+		</view>
+		<view class="page-font-green">
+			*二维码截图签到无效
+		</view>
+		<view class="page-font">
+			请至会议现场打开签到信息
+		</view>
+		<view class="page-font">
+			扫码签到
+		</view>
+		<view class="mgt46">
+			<button class="mini-btn" type="primary" @click="goIndex">回到首页</button>
+		</view>
+		<button class="mini-btn" type="primary" @click="goIndexSue">成功</button>
+		<button class="mini-btn" type="primary" @click="goIndexDel">失败</button>
+		<image src="../../static/advertising.png" class="advertising"></image>
 	</view>
 </template>
-
 <script>
-	// import tkiQrcode from "@/components/tki-qrcode/tki-qrcode.vue"
-	import tkiQrcode from "../../components/tki-qrcode/tki-qrcode.vue"
+	import qrcode from '../../components/qrcode/qrcode.vue'
+
 	export default {
 		data() {
 			return {
-				val: '二维码', // 要生成的二维码值
-				size: 600, // 二维码大小
-				unit: 'upx', // 单位
-				background: '#b4e9e2', // 背景色
-				foreground: '#309286', // 前景色
-				pdground: '#32dbc6', // 角标色
-				icon: '../../static/favicon.jpg', // 二维码图标
-				iconsize: 40, // 二维码图标大小
-				lv: 3, // 二维码容错级别 ， 一般不用设置，默认就行
-				onval: true, // val值变化时自动重新生成二维码
-				loadMake: true, // 组件加载完成后自动生成二维码
-				src: '', // 二维码生成后的图片地址或base64
-				resultId: '',
-				memberResume: '',
-				signLongitude: '',
-				signLatitude: '',
+				qrval: '{"memberId":"","signLongitude":"","signLatitude":""}', //内容
+				qrsize: 200,
 			}
 		},
 		onLoad() {
@@ -45,32 +46,80 @@
 				signLatitude: that.signLatitude
 			};
 			var myMesJsonStr = JSON.stringify(myMesJson);
-			that.val = myMesJsonStr;
+			that.qrval = myMesJsonStr;
+			console.log(that.qrval)
+			that.$refs.qrcode.creatQrcode();
+			
+			uni.connectSocket({
+				url: 'wss://www.example.com/socket'
+			});
+			uni.onSocketOpen(function(res) {
+				console.log('WebSocket连接已打开！');
+			});
+			
+			
 		},
 		methods: {
-			// 保存二维码
-			// saveQrcode() {
-			// 	this.$refs.qrcode._saveCode()
-			// },
-			qrR(res) {
-				this.src = res
+				goIndex() {
+				uni.switchTab({
+					url: '/pages/index/index'
+				});
 			},
+			goIndexSue(){
+					uni.redirectTo({
+					url: "../signSucceed/signSucceed"
+				})	
+			},
+			goIndexDel(){
+				uni.redirectTo({
+					url: "../signDefeated/signDefeated"
+				})	
+			}
 		},
 		components: {
-			tkiQrcode
+			qrcode
 		}
-
 	}
 </script>
-
 <style>
 	.contant {
 		display: flex;
 		justify-content: center;
-		align-items: ceter;
-		    -webkit-align-items: center;
-	}
-	.qrimg {
+		align-items: center;
+		flex-direction: column;
+		padding-top:100upx;
 		text-align: center;
+	}
+	.page-tittle{
+		font-size: 12px;
+		color:#222222;
+		margin-bottom: 30upx;
+	}
+	.qrvalBox{
+		width: 500upx;
+		height: 500upx;
+		background: #fff;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.page-font-green{
+		font-size: 14px;
+		color:#1aad19;
+		padding:40upx 0 20upx 0;
+	}
+	.page-font{
+		font-size: 14px;
+		color:#999999;
+		padding-bottom: 20upx;
+	}
+	.mgt46 {
+		margin-top: 46upx;
+		width: 400upx;
+	}
+	.advertising{
+		padding-top:160upx;
+		width: 670upx;
+		height: 150upx;
 	}
 </style>

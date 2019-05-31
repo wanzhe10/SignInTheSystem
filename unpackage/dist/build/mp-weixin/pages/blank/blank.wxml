@@ -1,0 +1,1 @@
+<view class="page" bind:__l="__l">空白页</view>

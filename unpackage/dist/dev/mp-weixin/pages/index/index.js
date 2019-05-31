@@ -16,6 +16,14 @@
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -30,6 +38,7 @@ var _default =
     signTouStar: function signTouStar() {
       this.logoHttp = '../../static/signIconDown.png';
     },
+    // 手指弹起
     signTouEnd: function signTouEnd() {
       var that = this;
       var serverUrl = that.serverUrl;
@@ -40,7 +49,8 @@ var _default =
         success: function success(res) {//成功
           that.tokenIndex = res.data;
           uni.request({
-            url: serverUrl + '/memberDetail/select?token=' + that.tokenIndex, //获取微信授权信息
+            // url: serverUrl + '/memberDetail/select?token=' + that.tokenIndex, //获取微信授权信息
+            url: serverUrl + '/memberDetail/select', //获取微信授权信息
             header: {
               'Content-Type': 'application/x-www-form-urlencoded',
               'token': that.tokenIndex },
@@ -54,8 +64,17 @@ var _default =
               } else {
                 uni.setStorageSync('resultId', res.data.result.id); //将 data 存储在本地缓存中指定的 key 中，会覆盖掉原来该 key 对应的内容，这是一个同步接口。
                 uni.setStorageSync('memberResume', res.data.result.memberResume); //将 data 存储在本地缓存中指定的 key 中，会覆盖掉原来该 key 对应的内容，这是一个同步接口。
-                uni.navigateTo({
-                  url: "../succeed/succeed" });
+                uni.getLocation({
+                  type: 'wgs84',
+                  success: function success(res) {
+                    console.log('当前位置的经度：' + res.longitude);
+                    console.log('当前位置的纬度：' + res.latitude);
+                    uni.setStorageSync('signLongitude', res.longitude); //经度
+                    uni.setStorageSync('signLatitude', res.latitude); //纬度
+                    uni.redirectTo({
+                      url: "../myMes/myMes" });
+
+                  } });
 
               }
             } });

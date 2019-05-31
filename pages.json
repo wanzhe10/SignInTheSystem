@@ -20,19 +20,9 @@
         }
         ,{
             "path" : "pages/massage/massage",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/succeed/succeed",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/signIn/signIn",
-            "style" : {}
-        }
-        ,{
-            "path" : "pages/explain/explain",
-            "style" : {}
+            "style" : {
+					"navigationBarTitleText": ""
+			}
         }
         ,{
             "path" : "pages/contactUs/contactUs",
@@ -40,18 +30,31 @@
         }
         ,{
             "path" : "pages/myMes/myMes",
-            "style" : {}
+            "style" : {
+					"navigationBarTitleText": "扫码签到"
+			}
         }
         ,{
             "path" : "pages/Authorization/Authorization",
             "style" : {}
         }
+        ,{
+            "path" : "pages/signSucceed/signSucceed",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/signDefeated/signDefeated",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/submit/submit",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/signNews/signNews",
+            "style" : {}
+        }
     ],
-	 "permission": {
-    "scope.userLocation": {
-      "desc": "你的位置信息将用于小程序位置接口的效果展示"
-    }
-  },
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "签到系统",

@@ -1,0 +1,1 @@
+<view class="page contant" bind:__l="__l"><view data-event-opts="{{[['touchstart',[['signTouStar',['$event']]]],['touchend',[['signTouEnd',['$event']]]]]}}" class="signIconBox" bindtouchstart="__e" bindtouchend="__e"><image class="logo" src="{{logoHttp}}"></image><view class="sign-font">点击签到</view></view></view>

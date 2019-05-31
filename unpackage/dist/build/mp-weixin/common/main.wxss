@@ -1,0 +1,47 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*每个页面公共css */
+.page {
+	width: 100%;
+	height:100%;
+	background-color: #f7f7f7;
+	/* background: red; */
+	/* padding:20upx; */
+	position: absolute;
+}
+.page-block {
+	background-color: #ffffff;
+}
+.page-box{
+	padding:20rpx;
+}
+.line-wapper {
+	padding: 0rpx 20rpx;
+}
+.line {
+	height: 1px;
+	background-color: #DBDBDA;
+}
+.uni-picker .uni-picker-item{
+	font-size: 12px !important;
+}
+

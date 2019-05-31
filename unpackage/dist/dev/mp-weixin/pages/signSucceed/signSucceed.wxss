@@ -1,0 +1,40 @@
+
+.contant {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	text-align: center;
+}
+.page-main{
+	padding-top:170rpx;
+	text-align: center;
+}
+.mgt30 {
+	width: 400rpx;
+	margin:30rpx auto;
+}
+.SignSucceed{
+	width: 160rpx;
+	height: 160rpx;
+	padding-bottom: 40rpx;
+}
+.SignSucceed-font{
+	font-size: 16px;
+	color:#1aad19;
+	padding-bottom: 74rpx;
+}
+.SignSucceed-icon{
+	width: 638rpx;
+	height: 232rpx;
+	padding-bottom: 54rpx;
+}
+

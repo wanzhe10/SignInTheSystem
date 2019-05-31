@@ -11,10 +11,10 @@
 		</view>
 		<view class="info-list">
 			<!-- 我参与的签到 -->
-			<navigator url="../signIn/signIn">
+			<navigator url="../signNews/signNews">
 		<view class="item-wapper">
 			
-			<view class="info-words">我参与的签到</view>
+			<view class="info-words">签到信息</view>
 			<view class="right-wapper">
 				<view class="arrow-block">
 					<image src="../../static/left-gray-arrow.png" class="arrow-ico"></image>
@@ -24,7 +24,7 @@
 		</navigator>
 
 				<!-- 使用说明 -->
-				<navigator url="../explain/explain">
+			<!-- 	<navigator url="../explain/explain">
 		<view class="item-wapper">
 			<view class="info-words">使用说明</view>
 			<view class="right-wapper">
@@ -33,7 +33,7 @@
 				</view>
 			</view>
 		</view>
-		</navigator>
+		</navigator> -->
 				<!-- 联系我们 -->
 				<navigator url="../contactUs/contactUs">
 		<view class="item-wapper">
