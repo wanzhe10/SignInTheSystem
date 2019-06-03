@@ -1,14 +1,43 @@
 
-.contant{
-		padding:20rpx;
+.contant {
+	padding: 20rpx;
 }
-.topic{
+
+/* 	.page-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+} */
+.topic {
 	background-color: #fff;
-	margin:30rpx 0rpx;
-	padding:20rpx;
+	margin: 30rpx 0rpx;
+	padding: 20rpx;
 }
-label{
+label {
 	display: block;
 	padding: 10rpx 0;
+}
+.mgt30 {
+	width: 400rpx;
+	margin: 30rpx auto;
+}
+.page-main {
+	padding-top: 170rpx;
+	text-align: center;
+}
+.SignSucceed {
+	width: 160rpx;
+	height: 160rpx;
+	padding-bottom: 40rpx;
+}
+.SignSucceed-font {
+	font-size: 16px;
+	color: #222222;
+	padding-bottom: 74rpx;
+	font-weight: bold;
+}
+.SignSucceed-font-small {
+	font-size: 14px;
+	color: #222222;
 }
 

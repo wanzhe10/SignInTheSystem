@@ -1,17 +1,19 @@
 <template>
 	<view class="page contant">
 		<view class="page-main">
-			<icon :type="iconType" size="46" />
-			<view class="">
-				已提交
+			<image src="../../static/SignSucceed.png" class="SignSucceed"></image>
+			<view class="SignSucceed-font">
+				提交成功！
 			</view>
-			<view class="">
-				感谢参与
+			<view class="SignSucceed-font-small">
+				感谢您的参与
 			</view>
 			<view class="mgt30">
-				<button class="mini-btn" type="default" @click="goIndex">回首页</button>
+				<button class="mini-btn" type="primary" @click="goIndex">回首页</button>
 			</view>
 		</view>
+		
+		
 	</view>
 
 </template>
@@ -20,19 +22,7 @@
 	export default {
 		data() {
 			return {
-				iconType: ['success']
 			}
-		},
-		onLoad(e) {
-			// #ifdef APP-PLUS|| MP-WEIXIN
-			this.iconType = ['success']
-			// #endif
-			// #ifdef MP-ALIPAY
-			this.iconType = ['success']
-			// #endif
-			// #ifdef MP-BAIDU
-			this.iconType = ['success']
-			// #endif
 		},
 		methods: {
 			goIndex() {
@@ -51,9 +41,27 @@
 		align-items: center;
 		text-align: center;
 	}
-
+	.page-main{
+		padding-top:170upx;
+		text-align: center;
+	}
+	.SignSucceed{
+		width: 160upx;
+		height: 160upx;
+		padding-bottom: 40upx;
+	}
+		.SignSucceed-font{
+		font-size: 16px;
+		color:#222222;
+		padding-bottom: 74upx;
+		font-weight: bold;
+	}
+	.SignSucceed-font-small{
+		font-size: 14px;
+		color:#222222;
+	}
 	.mgt30 {
-		margin-top: 30upx;
+		margin-top: 340upx;
 		width: 400upx;
 	}
 </style>

@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "扫码签到",
   "usingComponents": {
-    "qrcode": "/components/qrcode/qrcode"
+    "tki-qrcode": "/components/tki-qrcode/tki-qrcode"
   }
 }

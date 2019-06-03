@@ -8,7 +8,12 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
+//
+//
 //
 //
 //
@@ -54,18 +59,20 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 var _default =
 {
   data: function data() {
-    return {};
-
+    return {
+      visible: 1 };
 
   },
   methods: {
     formSubmit: function formSubmit(e) {
+
       console.log('form发生了submit事件，携带数据为：' + JSON.stringify(e.detail.value));
-    },
-    formReset: function formReset(e) {
-      console.log('清空数据');
-      this.chosen = '';
+      uni.redirectTo({
+        url: "../submit/submit" });
+
+
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 

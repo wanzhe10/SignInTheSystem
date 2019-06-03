@@ -33,12 +33,12 @@
 								'Content-Type': 'application/x-www-form-urlencoded',
 							},
 							success: (res) => {
+								console.log(res);
 								 //将 data 存储在本地缓存中指定的 key 中，会覆盖掉原来该 key 对应的内容，这是一个异步接口。
 								uni.setStorage({
 									key: 'token',
 									data:  res.data.result,
 									success: function() {
-										
 									uni.switchTab({
 										url: '../index/index' //授权页
 									})

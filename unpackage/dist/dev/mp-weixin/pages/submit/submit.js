@@ -26,22 +26,12 @@
 //
 //
 //
+//
+//
 var _default =
 {
   data: function data() {
-    return {
-      iconType: ['success'] };
-
-  },
-  onLoad: function onLoad(e) {
-
-    this.iconType = ['success'];
-
-
-
-
-
-
+    return {};
 
   },
   methods: {

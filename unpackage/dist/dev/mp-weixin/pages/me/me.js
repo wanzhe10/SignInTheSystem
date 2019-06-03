@@ -8,19 +8,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -70,19 +58,12 @@ var _default =
 
   },
   methods: {
-    // 点击图片出来上拉框
-
-    // faceClick(){
-    // 	uni.showActionSheet({
-    // 		itemList:['下载图片','aaa','zzz'],
-    // 		success(res) {
-    // 			if(res.tapIndex == 0){
-    // 				console.log('下载')
-    // 			}
-    // 		}
-    // 	})
-    // }
-  } };exports.default = _default;
+    contactUs: function contactUs() {
+      uni.makePhoneCall({
+        phoneNumber: '010-56252591' //仅为示例
+      });
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 

@@ -14,8 +14,27 @@
 	        align-items: center;
 	text-align: center;
 }
+.page-main{
+	padding-top:170rpx;
+	text-align: center;
+}
+.SignSucceed{
+	width: 160rpx;
+	height: 160rpx;
+	padding-bottom: 40rpx;
+}
+.SignSucceed-font{
+	font-size: 16px;
+	color:#222222;
+	padding-bottom: 74rpx;
+	font-weight: bold;
+}
+.SignSucceed-font-small{
+	font-size: 14px;
+	color:#222222;
+}
 .mgt30 {
-	margin-top: 30rpx;
+	margin-top: 340rpx;
 	width: 400rpx;
 }
 

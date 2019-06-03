@@ -25,10 +25,6 @@
 			}
         }
         ,{
-            "path" : "pages/contactUs/contactUs",
-            "style" : {}
-        }
-        ,{
             "path" : "pages/myMes/myMes",
             "style" : {
 					"navigationBarTitleText": "扫码签到"
