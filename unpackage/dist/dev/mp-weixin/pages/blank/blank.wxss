@@ -8,6 +8,16 @@
 	flex-direction: column;
 	justify-content: center;
 } */
+.title {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	    -ms-flex-wrap: wrap;
+	        flex-wrap: wrap;
+	padding: 10rpx 0;
+}
 .topic {
 	background-color: #fff;
 	margin: 30rpx 0rpx;

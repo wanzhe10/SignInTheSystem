@@ -44,9 +44,6 @@
 
 			}
 		},
-		onLoad(e) {
-
-		},
 		methods: {
 			contactUs() {
 				uni.makePhoneCall({

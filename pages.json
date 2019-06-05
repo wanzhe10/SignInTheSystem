@@ -15,7 +15,7 @@
         ,{
             "path" : "pages/blank/blank",
             "style" : {
-					"navigationBarTitleText":"空白页"
+					"navigationBarTitleText":"调查问卷"
 			}
         }
         ,{

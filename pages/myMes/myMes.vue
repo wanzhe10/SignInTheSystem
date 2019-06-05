@@ -61,17 +61,14 @@
 			};
 			var myMesJsonStr = JSON.stringify(myMesJson);
 			that.val = myMesJsonStr;
+			uni.connectSocket({
+				url: 'ws://120.78.76.72/websocket/' + token,
+				header: {
 
-
-
-// 			uni.connectSocket({
-// 				url: 'ws://120.78.76.72/websocket/' + token,
-// 				header: {
-// 
-// 					'Content-Type': 'application/x-www-form-urlencoded',
-// 				},
-// 				method: 'GET'
-// 			});
+					'Content-Type': 'application/x-www-form-urlencoded',
+				},
+				method: 'GET'
+			});
 			uni.onSocketMessage(function(res) {
 				let socketRes = JSON.parse(res.data);
 				console.log(socketRes)
@@ -98,11 +95,6 @@
 					url: "../index/index"
 				})
 			},
-			// goIndexDel() {
-			// 	uni.redirectTo({
-			// 		url: "../signDefeated/signDefeated"
-			// 	})
-			// }
 		},
 		components: {
 			tkiQrcode

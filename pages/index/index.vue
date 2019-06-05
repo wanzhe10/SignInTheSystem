@@ -34,20 +34,35 @@
 				let serverUrl = that.serverUrl
 				this.logoHttp = '../../static/signIconUp.png';
 				//从本地缓存中异步获取指定 key 对应的内容
+					
+// try {
+//     const res = uni.getStorageInfoSync('token');
+// 	if(res == undefined){
+// 		uni.navigateTo({
+// 			url: "../Authorization/Authorization"
+// 		})
+// 	}else{
+// 		console.log('报错')
+// 
+// 	}
+// } catch (e) {
+// 	return
+//     // error
+// }
+				
 				 uni.getStorage({
 					key: 'token',
 					success: function(res) { //成功
 						that.tokenIndex = res.data;
 							uni.request({
-							// url: serverUrl + '/memberDetail/select?token=' + that.tokenIndex, //获取微信授权信息
 							url: serverUrl + '/memberDetail/select', //获取微信授权信息
 							header: {
-								'Content-Type': 'application/x-www-form-urlencoded',
+								'Content-Type': 'json',
 								'token': that.tokenIndex
 							},
 							success: (res) => {
-								console.log(res)
-								if (res.data.result == null) {
+								var memberName = res.data.result.memberName;
+								if (memberName == '' || memberName == null) {
 									uni.navigateTo({
 										url: "../massage/massage"
 									})
@@ -71,6 +86,7 @@
 						})
 					},
 					fail(res) {
+						console.log(1)
 						uni.navigateTo({
 							url: "../Authorization/Authorization"
 						})

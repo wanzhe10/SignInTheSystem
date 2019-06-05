@@ -45,30 +45,87 @@
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var _default =
 {
   data: function data() {
     return {
-      visible: 1 };
+      visible: -1,
+      token: "",
+      surveyArr: [],
+      sinArray: [], //单选
+      muArray: [] //多选
+    };
+  },
+  onLoad: function onLoad() {
+    var that = this;
+    var serverUrl = that.serverUrl;
+    that.token = uni.getStorageSync('token');
+    if (that.token == '' || that.token == undefined) {
+      uni.redirectTo({
+        url: "../Authorization/Authorization" });
+
+    } else {
+      uni.request({
+        url: serverUrl + '/questionnaire/selectByMeet', //获取微信授权信息
+        method: "GET",
+        header: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'token': that.token },
+
+        success: function success(res) {
+          if (res.data.result == '您已填写过问卷') {
+            that.visible = 0;
+          } else {
+            that.visible = 1;
+            that.surveyArr = res.data.result;
+          }
+        },
+        fail: function fail(res) {
+          uni.showToast({
+            title: "查询失败，请联系管理员",
+            icon: 'none' });
+
+        } });
+
+    }
+
 
   },
   methods: {
     formSubmit: function formSubmit(e) {
+      console.log(e);
+      console.log(JSON.stringify(e.detail.value));
+      var that = this;
+      var serverUrl = that.serverUrl;
+      var token = uni.getStorageSync('token');
+      var resultId = uni.getStorageSync('resultId');
+      var selectVaule = JSON.stringify(e.detail.value);
+      uni.request({
+        url: serverUrl + '/questionnaireRecord/insert', //获取微信授权信息
+        method: "POST",
+        data: {
+          meetingId: '',
+          memberId: '',
+          recordJson: selectVaule },
 
-      console.log('form发生了submit事件，携带数据为：' + JSON.stringify(e.detail.value));
-      uni.redirectTo({
-        url: "../submit/submit" });
+        header: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'token': token },
+
+        success: function success(res) {
+          uni.redirectTo({
+            url: "../submit/submit" });
+
+
+        },
+        fail: function fail(res) {
+          uni.showToast({
+            title: "失败重试",
+            icon: 'none' });
+
+        } });
+
+
 
 
     } } };exports.default = _default;

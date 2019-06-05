@@ -1,32 +1,21 @@
 <template>
 	<view class="page contant">
 		<form @submit="formSubmit" class="page-form" v-show="visible == 1">
-			<view class="uni-form-item uni-column topic">
-				<view class="title">1、医院级别1医院级别1医院级别1医院级别1医院级别1医院级别1医院级别1 (单选题)</view>
-				<radio-group name="医院级别1">
-					<label>
-						<radio value="radio1" />选项一
-					</label>
-					<label>
-						<radio value="radio2" />选项二
+			<view class="uni-form-item uni-column topic" v-for="(item,index) in surveyArr" :key='index'>
+				<view class="titleBox">
+					<view class="title">{{item.name}}
+						<view class="" v-show="item.type == 'SINGLE'">(单选)</view>
+						<view class="" v-show="item.type == 'MULTIPLE'">(多选)</view>
+					</view>
+				</view>
+				<radio-group :name="item.id" v-if="item.type == 'SINGLE'">
+					<label v-for="(itemson,index) in item.childList" :key='index'>
+						<radio :value="itemson.id" />{{itemson.name}}
 					</label>
 				</radio-group>
-			</view>
-
-			<view class="uni-form-item uni-column topic">
-				<view class="title">医院级别2 (多选题)</view>
-				<checkbox-group name="医院级别2">
-					<label>
-						<checkbox value="checkbox1" />选项一选项一选项一选项一选项一选项一选项一
-					</label>
-					<label>
-						<checkbox value="checkbox2" />选项二
-					</label>
-					<label>
-						<checkbox value="checkbox3" />选项三
-					</label>
-					<label>
-						<checkbox value="checkbox4" />选项四
+				<checkbox-group :name="item.id" v-if="item.type == 'MULTIPLE'">
+					<label v-for="(itemson,index) in item.childList" :key='index'>
+						<checkbox :value="itemson.id" />{{itemson.name}}
 					</label>
 				</checkbox-group>
 			</view>
@@ -34,7 +23,7 @@
 				<button formType="submit" type='primary'>提交</button>
 			</view>
 		</form>
-		<view class="page-main"  v-show="visible == 0">
+		<view class="page-main" v-show="visible == 0">
 			<image src="../../static/SignSucceed.png" class="SignSucceed"></image>
 			<view class="SignSucceed-font">
 				您已填写过本次调查问卷
@@ -50,16 +39,84 @@
 	export default {
 		data() {
 			return {
-				visible: 1,
+				visible: -1,
+				token: "",
+				surveyArr: [],
+				sinArray: [], //单选
+				muArray: [], //多选
 			}
+		},
+		onLoad() {
+			var that = this;
+			var serverUrl = that.serverUrl
+			that.token = uni.getStorageSync('token');
+			if (that.token == '' || that.token == undefined) {
+				uni.redirectTo({
+					url: "../Authorization/Authorization"
+				})
+			} else {
+				uni.request({
+					url: serverUrl + '/questionnaire/selectByMeet', //获取微信授权信息
+					method: "GET",
+					header: {
+						'Content-Type': 'application/x-www-form-urlencoded',
+						'token': that.token
+					},
+					success: (res) => {
+						if (res.data.result == '您已填写过问卷') {
+							that.visible = 0;
+						} else {
+							that.visible = 1;
+							that.surveyArr = res.data.result;
+						}
+					},
+					fail(res) {
+						uni.showToast({
+							title: "查询失败，请联系管理员",
+							icon: 'none',
+						})
+					}
+				})
+			}
+
+
 		},
 		methods: {
 			formSubmit: function(e) {
+				console.log(e)
+				console.log(JSON.stringify(e.detail.value))
+				var that = this;
+				var serverUrl = that.serverUrl
+				var token = uni.getStorageSync('token');
+				var resultId = uni.getStorageSync('resultId');
+				let selectVaule = JSON.stringify(e.detail.value);
+				uni.request({
+					url: serverUrl + '/questionnaireRecord/insert', //获取微信授权信息
+					method: "POST",
+					data: {
+						meetingId: '',
+						memberId: '',
+						recordJson: selectVaule,
+					},
+					header: {
+						'Content-Type': 'application/x-www-form-urlencoded',
+						'token': token
+					},
+					success: (res) => {
+						uni.redirectTo({
+							url: "../submit/submit"
+						})
 
-				console.log('form发生了submit事件，携带数据为：' + JSON.stringify(e.detail.value))
-				uni.redirectTo({
-					url: "../submit/submit"
+					},
+						fail(res) {
+						uni.showToast({
+							title: "失败重试",
+							icon: 'none',
+						})
+					}
 				})
+
+
 
 			},
 		},
@@ -76,6 +133,11 @@
 		flex-direction: column;
 		justify-content: center;
 	} */
+	.title {
+		display: flex;
+		flex-wrap: wrap;
+		padding: 10upx 0;
+	}
 
 	.topic {
 		background-color: #fff;
