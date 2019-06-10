@@ -94,6 +94,8 @@ var _default =
           success: function success(res) {
             console.log(res);
             if (res.data.code == 20000) {
+              uni.setStorageSync('signLongitude', res.longitude); //经度
+              uni.setStorageSync('signLatitude', res.latitude); //纬度
               uni.navigateTo({
                 url: "../myMes/myMes" });
 

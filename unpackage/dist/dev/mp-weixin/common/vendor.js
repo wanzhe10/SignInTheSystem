@@ -8362,9 +8362,9 @@ var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules
 var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ "E:\\签到系统\\SignInTheSystem\\App.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 
 _vue.default.config.productionTip = false;
-// Vue.prototype.serverUrl = "https://www.yilaiyiwang.com" //生产环境
+_vue.default.prototype.serverUrl = "https://www.qlxlm.com/"; //生产环境
 // Vue.prototype.serverUrl = "http://www.yilaiyiwang.com:8090" //测试环境
-_vue.default.prototype.serverUrl = "http://120.78.76.72"; //测试环境
+// Vue.prototype.serverUrl = "http://120.78.76.72" //测试环境
 _App.default.mpType = 'app';
 
 var app = new _vue.default(_objectSpread({},
@@ -8507,6 +8507,23 @@ createPage(_signDefeated.default);
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
 var _signNews = _interopRequireDefault(__webpack_require__(/*! ./pages/signNews/signNews.vue */ "E:\\签到系统\\SignInTheSystem\\pages\\signNews\\signNews.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_signNews.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "E:\\签到系统\\SignInTheSystem\\main.js?{\"page\":\"pages%2FsignNoo%2FsignNoo\"}":
+/*!****************************************************************************!*\
+  !*** E:/签到系统/SignInTheSystem/main.js?{"page":"pages%2FsignNoo%2FsignNoo"} ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "E:\\签到系统\\SignInTheSystem\\pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _signNoo = _interopRequireDefault(__webpack_require__(/*! ./pages/signNoo/signNoo.vue */ "E:\\签到系统\\SignInTheSystem\\pages\\signNoo\\signNoo.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_signNoo.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),

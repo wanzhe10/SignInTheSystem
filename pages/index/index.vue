@@ -34,22 +34,6 @@
 				let serverUrl = that.serverUrl
 				this.logoHttp = '../../static/signIconUp.png';
 				//从本地缓存中异步获取指定 key 对应的内容
-					
-// try {
-//     const res = uni.getStorageInfoSync('token');
-// 	if(res == undefined){
-// 		uni.navigateTo({
-// 			url: "../Authorization/Authorization"
-// 		})
-// 	}else{
-// 		console.log('报错')
-// 
-// 	}
-// } catch (e) {
-// 	return
-//     // error
-// }
-				
 				 uni.getStorage({
 					key: 'token',
 					success: function(res) { //成功
@@ -61,12 +45,16 @@
 								'token': that.tokenIndex
 							},
 							success: (res) => {
-								var memberName = res.data.result.memberName;
-								if (memberName == '' || memberName == null) {
+								console.log(res)
+								var memberName  = res.data.result;
+								 var aaa = JSON.stringify(memberName)
+								 console.log(aaa.indexOf("memberName") == -1)
+								if (aaa.indexOf("memberName") == -1) {
 									uni.navigateTo({
 										url: "../massage/massage"
 									})
-								} else {
+								} 
+								else {
 									uni.setStorageSync('resultId', res.data.result.id); //将 data 存储在本地缓存中指定的 key 中，会覆盖掉原来该 key 对应的内容，这是一个同步接口。
 									uni.setStorageSync('memberResume', res.data.result.memberResume); //将 data 存储在本地缓存中指定的 key 中，会覆盖掉原来该 key 对应的内容，这是一个同步接口。
 										uni.getLocation({
@@ -86,7 +74,6 @@
 						})
 					},
 					fail(res) {
-						console.log(1)
 						uni.navigateTo({
 							url: "../Authorization/Authorization"
 						})

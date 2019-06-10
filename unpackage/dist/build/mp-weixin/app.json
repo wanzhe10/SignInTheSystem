@@ -4,12 +4,13 @@
     "pages/me/me",
     "pages/blank/blank",
     "pages/massage/massage",
-    "pages/succeed/succeed",
-    "pages/signIn/signIn",
-    "pages/explain/explain",
-    "pages/contactUs/contactUs",
     "pages/myMes/myMes",
-    "pages/Authorization/Authorization"
+    "pages/Authorization/Authorization",
+    "pages/signSucceed/signSucceed",
+    "pages/signNoo/signNoo",
+    "pages/signDefeated/signDefeated",
+    "pages/submit/submit",
+    "pages/signNews/signNews"
   ],
   "subPackages": [],
   "window": {
@@ -43,6 +44,11 @@
         "selectedIconPath": "static/me_sel.png"
       }
     ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
   },
   "usingComponents": {},
   "sitemapLocation": "sitemap.json"

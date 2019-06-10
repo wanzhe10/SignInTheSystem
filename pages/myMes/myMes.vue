@@ -41,7 +41,7 @@
 				loadMake: true, // 组件加载完成后自动生成二维码
 				src: '', // 二维码生成后的图片地址或base64
 				resultId: '',
-				memberResume: '',
+				// memberResume: '',
 				signLongitude: '',
 				signLatitude: '',
 			}
@@ -51,7 +51,7 @@
 			let serverUrl = that.serverUrl;
 			let token = uni.getStorageSync('token');
 			that.resultId = uni.getStorageSync('resultId');
-			that.memberResume = uni.getStorageSync('memberResume');
+			// that.memberResume = uni.getStorageSync('memberResume');
 			that.signLongitude = uni.getStorageSync('signLongitude');
 			that.signLatitude = uni.getStorageSync('signLatitude');
 			var myMesJson = {
@@ -62,7 +62,7 @@
 			var myMesJsonStr = JSON.stringify(myMesJson);
 			that.val = myMesJsonStr;
 			uni.connectSocket({
-				url: 'ws://120.78.76.72/websocket/' + token,
+				url: 'wss://www.qlxlm.com/websocket/' + token,
 				header: {
 
 					'Content-Type': 'application/x-www-form-urlencoded',
@@ -72,12 +72,15 @@
 			uni.onSocketMessage(function(res) {
 				let socketRes = JSON.parse(res.data);
 				console.log(socketRes)
-
 				if (socketRes.type == '' || socketRes.type == undefined) {
 					return;
 				} else if (socketRes.type === 'SIGN_SUCCESS') {
 					uni.redirectTo({
 						url: '../signSucceed/signSucceed'
+					});
+				} else if (socketRes.type === 'ALREADY_SIGN') {
+					uni.redirectTo({
+						url: '../signNoo/signNoo'
 					});
 				} else {
 					uni.redirectTo({

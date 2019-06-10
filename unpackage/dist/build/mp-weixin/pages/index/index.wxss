@@ -1,17 +1,17 @@
 
 .contant {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-pack: center;
-	-webkit-justify-content: center;
-	    -ms-flex-pack: center;
-	        justify-content: center;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-	    -ms-flex-align: center;
-	        align-items: center;
+text-align: center;
+}
+.page-tittle{
+padding-top:67rpx;
+padding-bottom:26rpx;
+}
+.page-nav{
+	padding-bottom:100rpx;
+}
+.logo{
+	width: 640rpx;
+	height: 640rpx;
 }
 .signIconBox {
 	text-align: center;
@@ -21,7 +21,13 @@
 	color: #8f8f94;
 }
 .sign-font {
-	font-size: 18px;
+	font-size: 24px;
 	font-weight: bold;
+	color:#1aad19;
+}
+.sign-font-nav{
+	font-size: 15px;
+	color:#999999;
+	margin-top:38rpx;
 }
 

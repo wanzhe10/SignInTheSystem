@@ -4,12 +4,15 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.6.4",
 	"appid": "wx9e8d7d1f8430f741",
-	"projectname": "SignInTheSystem",
+	"projectname": "医来医往",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"condition": {

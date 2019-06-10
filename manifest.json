@@ -1,5 +1,5 @@
 {
-    "name" : "SignInTheSystem",
+    "name" : "医来医往",
     "appid" : "__UNI__B3823FE",
     "description" : "",
     "versionName" : "1.0.0",
@@ -57,13 +57,16 @@
         /* 小程序特有相关 */
         "appid" : "wx9e8d7d1f8430f741",
         "setting" : {
-            "urlCheck" : false
+            "urlCheck" : true,
+            "es6" : true,
+            "postcss" : true,
+            "minified" : true
         },
         "usingComponents" : true,
-		"permission":{
-			 "scope.userLocation": {
-			  "desc": "你的位置信息将用于小程序位置接口的效果展示"
-			}
-		}
+        "permission" : {
+            "scope.userLocation" : {
+                "desc" : "你的位置信息将用于小程序位置接口的效果展示"
+            }
+        }
     }
 }

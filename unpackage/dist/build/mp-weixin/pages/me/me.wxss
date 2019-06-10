@@ -1,82 +1,19 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.contant {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+}
 
 /* 头像 start */
 .face-wapper {
@@ -84,17 +21,13 @@
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
-	-webkit-box-orient: horizontal;
+	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
-	-webkit-flex-direction: row;
-	    -ms-flex-direction: row;
-	        flex-direction: row;
-	-webkit-box-pack: center;
-	-webkit-justify-content: center;
-	    -ms-flex-pack: center;
-	        justify-content: center;
-	margin-top: 120rpx;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
 	margin-bottom: 120rpx;
+	margin: 120rpx auto;
 }
 .face {
 	width: 160rpx;
@@ -102,6 +35,10 @@
 	border-radius: 50%;
 	overflow: hidden;
 }
+.userNickName {
+	padding-top: 20rpx;
+}
+
 /* 头像 end */
 .item-wapper {
 	display: -webkit-box;
@@ -119,7 +56,7 @@
 	    -ms-flex-pack: start;
 	        justify-content: flex-start;
 	background-color: #fff;
-	margin-bottom:30rpx;
+	margin-bottom: 30rpx;
 	/* border-bottom: 1px solid red; */
 }
 .info-words {
@@ -155,10 +92,11 @@
 	height: 30rpx;
 }
 .line-wapper {
-		padding: 0rpx 20rpx;
+	padding: 0rpx 20rpx;
 }
+
 /* 	.line {
-		height: 1px;
-		background-color: #DBDBDA;
-	} */
+	height: 1px;
+	background-color: #DBDBDA;
+} */
 

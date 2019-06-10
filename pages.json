@@ -38,6 +38,10 @@
             "path" : "pages/signSucceed/signSucceed",
             "style" : {}
         }
+		 ,{
+		    "path" : "pages/signNoo/signNoo",
+		    "style" : {}
+		}
         ,{
             "path" : "pages/signDefeated/signDefeated",
             "style" : {}

@@ -27,8 +27,9 @@
 					provider: 'weixin',
 					success: function(loginRes) {
 						console.log(loginRes)
+						// return
 						uni.request({
-							url: serverUrl + '/login/weChat/oauth?code=' + loginRes.code,
+							url: serverUrl + 'login/weChat/oauth?code=' + loginRes.code,
 							header: {
 								'Content-Type': 'application/x-www-form-urlencoded',
 							},
