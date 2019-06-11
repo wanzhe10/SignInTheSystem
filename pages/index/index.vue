@@ -10,7 +10,7 @@
 			<image :src="logoHttp" class="logo"></image>
 			<view class="sign-font">签到信息</view>
 			<view class="sign-font-nav">点击获取签到二维码</view>
-			
+
 		</view>
 	</view>
 </template>
@@ -20,7 +20,8 @@
 			return {
 				title: 'Hello',
 				logoHttp: '../../static/signIconUp.png',
-				tokenIndex: ''
+				tokenIndex: '',
+				memberName: ''
 			}
 		},
 		methods: {
@@ -30,15 +31,15 @@
 			},
 			// 手指弹起
 			signTouEnd() {
-				let that = this;
+				var that = this;
 				let serverUrl = that.serverUrl
 				this.logoHttp = '../../static/signIconUp.png';
 				//从本地缓存中异步获取指定 key 对应的内容
-				 uni.getStorage({
+				uni.getStorage({
 					key: 'token',
 					success: function(res) { //成功
 						that.tokenIndex = res.data;
-							uni.request({
+						uni.request({
 							url: serverUrl + '/memberDetail/select', //获取微信授权信息
 							header: {
 								'Content-Type': 'json',
@@ -46,18 +47,11 @@
 							},
 							success: (res) => {
 								console.log(res)
-								var memberName  = res.data.result;
-								 var aaa = JSON.stringify(memberName)
-								 console.log(aaa.indexOf("memberName") == -1)
-								if (aaa.indexOf("memberName") == -1) {
-									uni.navigateTo({
-										url: "../massage/massage"
-									})
-								} 
-								else {
+								that.memberName = res.data.result.memberName;
+								console.log(that.memberName != null)
+								if (that.memberName != null) {
 									uni.setStorageSync('resultId', res.data.result.id); //将 data 存储在本地缓存中指定的 key 中，会覆盖掉原来该 key 对应的内容，这是一个同步接口。
-									uni.setStorageSync('memberResume', res.data.result.memberResume); //将 data 存储在本地缓存中指定的 key 中，会覆盖掉原来该 key 对应的内容，这是一个同步接口。
-										uni.getLocation({
+									uni.getLocation({
 										type: 'wgs84',
 										success: function(res) {
 											console.log('当前位置的经度：' + res.longitude);
@@ -69,6 +63,21 @@
 											})
 										}
 									});
+								} else {
+									uni.setStorageSync('resultId', res.data.result.id); //将 data 存储在本地缓存中指定的 key 中，会覆盖掉原来该 key 对应的内容，这是一个同步接口。
+									uni.getLocation({
+										type: 'wgs84',
+										success: function(res) {
+											console.log('当前位置的经度：' + res.longitude);
+											console.log('当前位置的纬度：' + res.latitude);
+											uni.setStorageSync('signLongitude', res.longitude); //经度
+											uni.setStorageSync('signLatitude', res.latitude); //纬度
+											uni.navigateTo({
+												url: "../massage/massage"
+											})
+										}
+									});
+									
 								}
 							},
 						})
@@ -79,9 +88,9 @@
 						})
 					}
 				});
-				
 
-			
+
+
 			}
 		}
 	}
@@ -89,19 +98,23 @@
 
 <style>
 	.contant {
-	text-align: center;
+		text-align: center;
 	}
-	.page-tittle{
-	padding-top:67upx;
-	padding-bottom:26upx;
+
+	.page-tittle {
+		padding-top: 80upx;
+		padding-bottom: 30upx;
 	}
-	.page-nav{
-		padding-bottom:100upx;
+
+	.page-nav {
+		padding-bottom: 100upx;
 	}
-	.logo{
-		width: 640upx;
-		height: 640upx;
-		}
+
+	.logo {
+		width: 480upx;
+		height: 480upx;
+		margin-bottom: 100upx;
+	}
 
 	.signIconBox {
 		text-align: center;
@@ -114,13 +127,13 @@
 
 	.sign-font {
 		font-size: 24px;
-		font-weight: bold;
-		color:#1aad19;
-		
+		color: #1aad19;
+
 	}
-	.sign-font-nav{
+
+	.sign-font-nav {
 		font-size: 15px;
-		color:#999999;
-		margin-top:38upx;
+		color: #999999;
+		margin-top: 38upx;
 	}
 </style>

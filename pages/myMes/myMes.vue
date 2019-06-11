@@ -82,7 +82,7 @@
 					uni.redirectTo({
 						url: '../signNoo/signNoo'
 					});
-				} else {
+				} else if (socketRes.type === '"LOCATION_MISTAKE'){
 					uni.redirectTo({
 						url: '../signDefeated/signDefeated'
 					});

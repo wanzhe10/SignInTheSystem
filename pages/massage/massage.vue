@@ -1,8 +1,8 @@
 <template>
 	<view class="page contant">
 		<view class="page-top">
-			<image src="../../static/hospatel1.jpg"></image>
-			<image src="../../static/hospatel2.jpg"></image>
+			<image src="../../static/hospatel1.png"></image>
+			<image src="../../static/hospatel2.png"></image>
 		</view>
 		<view class="page-form">
 			<view class="page-font-contant">
@@ -84,8 +84,7 @@
 						success: (res) => {
 							console.log(res)
 							if (res.data.code == 20000) {
-								uni.setStorageSync('signLongitude', res.longitude); //经度
-								uni.setStorageSync('signLatitude', res.latitude); //纬度
+							
 								uni.navigateTo({
 									url: "../myMes/myMes"
 								})

@@ -53,7 +53,7 @@
 		.SignSucceed-font{
 		font-size: 16px;
 		color:#222222;
-		padding-bottom: 74upx;
+		padding-bottom: 40upx;
 		font-weight: bold;
 	}
 	.SignSucceed-font-small{

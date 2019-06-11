@@ -1,8 +1,8 @@
 <template>
 	<view class="page contant">
 		<view class="page-top">
-			<image src="../../static/hospatel1.jpg"></image>
-			<image src="../../static/hospatel2.jpg"></image>
+			<image src="../../static/hospatel1.png"></image>
+			<image src="../../static/hospatel2.png"></image>
 		</view>
 		<view class="page-form">
 			<view class="page-font-contant">
@@ -32,33 +32,45 @@
 			}
 		},
 		onLoad() {
-				var that = this;
+			var that = this;
 			var serverUrl = that.serverUrl
-			that.token = uni.getStorageSync('token');
+			uni.getStorage({
+				key: 'token',
+				success: function(res) { //成功
+					that.token = uni.getStorageSync('token');
 					uni.request({
-					url: serverUrl + '/memberDetail/select',
-					method: "GET",
-					header: {
-						'Content-Type': 'application/x-www-form-urlencoded',
-						"token": that.token
-					},
-					success: (res) => {
-						console.log(res.data.result)
-						if (res.data.code == 20000) {
-							if(res.data.result.memberName !== undefined || res.data.result.memberName !== ''){
+						url: serverUrl + '/memberDetail/select',
+						method: "GET",
+						header: {
+							'Content-Type': 'application/x-www-form-urlencoded',
+							"token": that.token
+						},
+						success: (res) => {
+							console.log(res.data.result)
+							if (res.data.code == 20000) {
+								if (res.data.result.memberName !== undefined || res.data.result.memberName !== '') {
 									this.signName = res.data.result.memberName;
 									this.signNum = res.data.result.telephone;
 									this.signHospatel = res.data.result.hospitalName;
 									this.signOffeice = res.data.result.branchName;
+								}
+							} else {
+								this.signName = '';
+								this.signNum = '';
+								this.signHospatel = '';
+								this.signOffeice = '';
 							}
-						} else {
-							this.signName = '';
-							this.signNum = '';
-							this.signHospatel = '';
-							this.signOffeice = '';
-						}
-					},
-				})
+						},
+					})
+				},
+				fail(res) {
+					uni.redirectTo({
+						url: "../Authorization/Authorization"
+					})
+				}
+			});
+
+
 		},
 		methods: {
 			checkMobile(mobile) {
@@ -114,9 +126,9 @@
 							console.log(res)
 							if (res.data.code == 20000) {
 								uni.showToast({
-								title: "修改成功",
-								icon: 'success',
-							})	
+									title: "修改成功",
+									icon: 'success',
+								})
 							} else {
 								uni.showToast({
 									title: "修改失败",
