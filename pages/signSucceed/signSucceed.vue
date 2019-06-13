@@ -5,12 +5,13 @@
 			<view class="SignSucceed-font">
 				签到成功
 			</view>
-			<image src="../../static/SignSucceed-icon.png" class="SignSucceed-icon"></image>
+			<image src="../../static/SignSucceed-icon.png" class="SignSucceed-icon1"></image>
+			<image src="../../static/SignSucceed-icon1.png" class="SignSucceed-icon"></image>
 			<view class="mgt30">
-				<button class="mini-btn" type="primary" @click="goBlack">去填写</button>
+				<button class="mini-btn" type="primary" @click="goBlack">填写问卷</button>
 			</view>
 			<view class="mgt30">
-				<button class="mini-btn" type="default" @click="goIndex">回首页</button>
+				<button class="mini-btn" type="primary" plain="true"  @click="goIndex">回到首页</button>
 			</view>
 		</view>
 	</view>
@@ -68,9 +69,14 @@
 		color:#1aad19;
 		padding-bottom: 74upx;
 	}
-	.SignSucceed-icon{
+	.SignSucceed-icon1{
 		width: 638upx;
-		height: 232upx;
-		padding-bottom: 54upx;
+		height: 33upx;
+		padding-bottom: 176upx;
+	}
+		.SignSucceed-icon{
+		width: 431upx;
+		height: 71upx;
+		padding-bottom: 60upx;
 	}
 </style>

@@ -6,8 +6,8 @@
 		<view class="page-nav">
 			会议签到
 		</view>
-		<view class="signIconBox" @touchstart='signTouStar' @touchend="signTouEnd">
-			<image :src="logoHttp" class="logo"></image>
+		<view class="signIconBox">
+			<image :src="logoHttp" class="logo" @touchstart='signTouStar' @touchend="signTouEnd"></image>
 			<view class="sign-font">签到信息</view>
 			<view class="sign-font-nav">点击获取签到二维码</view>
 
@@ -24,6 +24,9 @@
 				memberName: ''
 			}
 		},
+		onLoad() {
+			  uni.hideLoading();
+		},
 		methods: {
 			// 手指按下
 			signTouStar() {
@@ -31,6 +34,9 @@
 			},
 			// 手指弹起
 			signTouEnd() {
+				uni.showLoading({
+					title: '加载中'
+				});
 				var that = this;
 				let serverUrl = that.serverUrl
 				this.logoHttp = '../../static/signIconUp.png';
@@ -38,6 +44,7 @@
 				uni.getStorage({
 					key: 'token',
 					success: function(res) { //成功
+						console.log(res)
 						that.tokenIndex = res.data;
 						uni.request({
 							url: serverUrl + '/memberDetail/select', //获取微信授权信息
@@ -58,6 +65,7 @@
 											console.log('当前位置的纬度：' + res.latitude);
 											uni.setStorageSync('signLongitude', res.longitude); //经度
 											uni.setStorageSync('signLatitude', res.latitude); //纬度
+											  uni.hideLoading();
 											uni.redirectTo({
 												url: "../myMes/myMes"
 											})
@@ -65,19 +73,10 @@
 									});
 								} else {
 									uni.setStorageSync('resultId', res.data.result.id); //将 data 存储在本地缓存中指定的 key 中，会覆盖掉原来该 key 对应的内容，这是一个同步接口。
-									uni.getLocation({
-										type: 'wgs84',
-										success: function(res) {
-											console.log('当前位置的经度：' + res.longitude);
-											console.log('当前位置的纬度：' + res.latitude);
-											uni.setStorageSync('signLongitude', res.longitude); //经度
-											uni.setStorageSync('signLatitude', res.latitude); //纬度
-											uni.navigateTo({
-												url: "../massage/massage"
-											})
-										}
-									});
-									
+										uni.navigateTo({
+										url: "../massage/massage"
+									})
+
 								}
 							},
 						})
@@ -104,16 +103,18 @@
 	.page-tittle {
 		padding-top: 80upx;
 		padding-bottom: 30upx;
+		font-size: 19px;
 	}
 
 	.page-nav {
 		padding-bottom: 100upx;
+		font-size: 19px;
 	}
 
 	.logo {
 		width: 480upx;
 		height: 480upx;
-		margin-bottom: 100upx;
+		margin-bottom: 80upx;
 	}
 
 	.signIconBox {
@@ -134,6 +135,6 @@
 	.sign-font-nav {
 		font-size: 15px;
 		color: #999999;
-		margin-top: 38upx;
+		margin-top: 34upx;
 	}
 </style>

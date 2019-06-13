@@ -47,6 +47,7 @@
 			}
 		},
 		onLoad() {
+			uni.hideLoading();
 			let that = this;
 			let serverUrl = that.serverUrl;
 			let token = uni.getStorageSync('token');
@@ -82,7 +83,7 @@
 					uni.redirectTo({
 						url: '../signNoo/signNoo'
 					});
-				} else if (socketRes.type === '"LOCATION_MISTAKE'){
+				} else if (socketRes.type == 'LOCATION_MISTAKE'){
 					uni.redirectTo({
 						url: '../signDefeated/signDefeated'
 					});

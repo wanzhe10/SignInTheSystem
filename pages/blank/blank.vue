@@ -3,14 +3,15 @@
 		<form @submit="formSubmit" class="page-form" v-show="visible == 1">
 			<view class="uni-form-item uni-column topic" v-for="(item,index) in surveyArr" :key='index'>
 				<view class="titleBox">
-					<view class="title">{{item.name}}
+					<view class="title">{{index+1}}.{{item.name}}
 						<view class="" v-show="item.type == 'SINGLE'">(单选)</view>
 						<view class="" v-show="item.type == 'MULTIPLE'">(多选)</view>
+						<view class="" v-show="item.type == 'COMPLETION'">(填空)</view>
 					</view>
 				</view>
 				<radio-group :name="item.id" v-if="item.type == 'SINGLE'">
 					<label v-for="(itemson,index) in item.childList" :key='index'>
-						<radio :value="itemson.id" />{{itemson.name}}
+						<radio :value="itemson.id" data='0' />{{itemson.name}}
 					</label>
 				</radio-group>
 				<checkbox-group :name="item.id" v-if="item.type == 'MULTIPLE'">
@@ -18,6 +19,9 @@
 						<checkbox :value="itemson.id" />{{itemson.name}}
 					</label>
 				</checkbox-group>
+				<view class="uni-form-item uni-column">
+					<input class="uni-input" :name="item.id" v-if="item.type == 'COMPLETION'" placeholder="请输入" />
+				</view>
 			</view>
 			<view class="mgt30">
 				<button formType="submit" type='primary'>提交</button>
@@ -55,6 +59,9 @@
 					url: "../Authorization/Authorization"
 				})
 			} else {
+				uni.showLoading({
+					title: '加载中'
+				});
 				uni.request({
 					url: serverUrl + '/questionnaire/selectByMeet', //获取微信授权信息
 					method: "GET",
@@ -63,6 +70,8 @@
 						'token': that.token
 					},
 					success: (res) => {
+						console.log(res)
+						uni.hideLoading();
 						if (res.data.result == '您已填写过问卷') {
 							that.visible = 0;
 						} else {
@@ -83,13 +92,25 @@
 		},
 		methods: {
 			formSubmit: function(e) {
-				console.log(e)
-				console.log(JSON.stringify(e.detail.value))
 				var that = this;
 				var serverUrl = that.serverUrl
 				var token = uni.getStorageSync('token');
 				var resultId = uni.getStorageSync('resultId');
-				let selectVaule = JSON.stringify(e.detail.value);
+				// console.log(e.detail.value)
+				var NumBase = e.detail.value
+				for (var key in NumBase) {
+					// console.log(key + " " + NumBase[key])
+					if (NumBase[key] == "") {
+						uni.showToast({
+							title: "有未答题目",
+							icon: 'none',
+						})
+						return false;
+					} else {
+						var selectVaule = JSON.stringify(e.detail.value);
+					}
+				}
+				console.log(selectVaule)
 				uni.request({
 					url: serverUrl + '/questionnaireRecord/insert', //获取微信授权信息
 					method: "POST",
@@ -108,16 +129,13 @@
 						})
 
 					},
-						fail(res) {
+					fail(res) {
 						uni.showToast({
 							title: "失败重试",
 							icon: 'none',
 						})
 					}
 				})
-
-
-
 			},
 		},
 	}

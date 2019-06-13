@@ -17,7 +17,7 @@
 			<view class="page-font">联系电话：</view>
 			<input type="number" maxlength="11" value="" v-model="signNum" />
 		</view>
-		<button type="primary" class="page-button" @click="succeed">保存修改</button>
+		<button type="primary" class="page-button" @click="succeed" :disabled="disabledBtn">保存修改</button>
 	</view>
 </template>
 <script>
@@ -28,7 +28,8 @@
 				signNum: '', //电话
 				signHospatel: '', //医院
 				signOffeice: '', //科室
-				token: ''
+				token: '',
+				disabledBtn:true
 			}
 		},
 		onLoad() {
@@ -46,20 +47,22 @@
 							"token": that.token
 						},
 						success: (res) => {
-							console.log(res.data.result)
 							if (res.data.code == 20000) {
-								if (res.data.result.memberName !== undefined || res.data.result.memberName !== '') {
-									this.signName = res.data.result.memberName;
-									this.signNum = res.data.result.telephone;
-									this.signHospatel = res.data.result.hospitalName;
-									this.signOffeice = res.data.result.branchName;
+								var memberName = res.data.result.memberName;
+								if (memberName != null) {
+									that.signName = res.data.result.memberName;
+									that.signNum = res.data.result.telephone;
+									that.signHospatel = res.data.result.hospitalName;
+									that.signOffeice = res.data.result.branchName;
+									that.disabledBtn = false;
+								}else {
+									that.signName = '';
+									that.signNum = '';
+									that.signHospatel = '';
+									that.signOffeice = '';
+									that.disabledBtn = true;
 								}
-							} else {
-								this.signName = '';
-								this.signNum = '';
-								this.signHospatel = '';
-								this.signOffeice = '';
-							}
+							} 
 						},
 					})
 				},

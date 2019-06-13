@@ -70,9 +70,6 @@
 		.SignSucceed-icon{
 			width: 397upx;
 			height: 73upx;
-			padding-bottom: 54upx;
+			padding-bottom: 50upx;
 		}
-		/* .mini-btn{
-			margin-
-		} */
 </style>

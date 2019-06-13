@@ -1,6 +1,19 @@
 <template>
 	<view class="page contant">
-		<button type="primary" open-type='getUserInfo' @getuserinfo="wxGetUserInfo" withCredentials="true">点击授权</button>
+		<image src="../../static/authorizationIcon.png" class="authorizationIcon"></image>
+		<view class="authorization-font">
+			医来医往会务组
+		</view>
+		<view class="authorization-font ">
+			申请获得以下授权：
+		</view>
+		<view class="authorization-smialfont-box">
+			<view class="authorization-smialfont padB64">
+				· 获取你的公开信息(昵称、头像、地区及性别)
+			</view>
+		</view>
+		<button type="primary" open-type='getUserInfo' @getuserinfo="wxGetUserInfo" withCredentials="true" class="buttonStyle">我知道了</button>
+		<!-- <button  type="primary" open-type='getUserInfo' @getuserinfo="wxGetUserInfo" withCredentials="true">我知道了</button> -->
 	</view>
 </template>
 
@@ -10,6 +23,9 @@
 			return {
 
 			}
+		},
+		onLoad() {
+			uni.hideLoading();
 		},
 		methods: {
 			wxGetUserInfo(res) {
@@ -35,17 +51,17 @@
 							},
 							success: (res) => {
 								console.log(res);
-								 //将 data 存储在本地缓存中指定的 key 中，会覆盖掉原来该 key 对应的内容，这是一个异步接口。
+								//将 data 存储在本地缓存中指定的 key 中，会覆盖掉原来该 key 对应的内容，这是一个异步接口。
 								uni.setStorage({
 									key: 'token',
-									data:  res.data.result,
+									data: res.data.result,
 									success: function() {
-									uni.switchTab({
-										url: '../index/index' //授权页
-									})
+										uni.switchTab({
+											url: '../index/index' //授权页
+										})
 									}
 								});
-								
+
 							},
 						})
 					},
@@ -55,11 +71,39 @@
 	}
 </script>
 
-<style>
-.contant{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100%;		
-}
+<style scoped>
+	.contant {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding-top: 150upx;
+
+	}
+	.buttonStyle{
+		width: 400upx;
+	}
+
+	.padB64 {
+		padding-top: 64upx;
+	}
+
+	.authorizationIcon {
+		width: 224upx;
+		height: 224upx;
+		margin-bottom: 200upx;
+	}
+
+	.authorization-font {
+		font-size: 16px;
+		padding-bottom: 20upx;
+		color: #222222;
+	}
+	.authorization-smialfont-box {
+		padding-bottom: 70upx;
+	}
+	.authorization-smialfont {
+		font-size: 14px;
+		color: #999999;
+		padding-bottom: 20upx;
+	}
 </style>

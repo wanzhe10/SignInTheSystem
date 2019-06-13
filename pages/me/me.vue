@@ -44,6 +44,9 @@
 
 			}
 		},
+		onLoad() {
+			uni.hideLoading();
+		},
 		methods: {
 			contactUs() {
 				uni.makePhoneCall({
