@@ -1,34 +1,36 @@
 {
-  "description": "项目配置文件。",
-  "packOptions": {
-    "ignore": []
-  },
-  "setting": {
-    "urlCheck": true,
-    "es6": true,
-    "postcss": true,
-    "minified": true
-  },
-  "compileType": "miniprogram",
-  "libVersion": "2.6.4",
-  "appid": "wx9e8d7d1f8430f741",
-  "projectname": "医来医往",
-  "condition": {
-    "search": {
-      "current": -1,
-      "list": []
-    },
-    "conversation": {
-      "current": -1,
-      "list": []
-    },
-    "game": {
-      "current": -1,
-      "list": []
-    },
-    "miniprogram": {
-      "current": -1,
-      "list": []
-    }
-  }
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.7.0",
+	"appid": "wx9e8d7d1f8430f741",
+	"projectname": "医来医往",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": []
+		}
+	}
 }

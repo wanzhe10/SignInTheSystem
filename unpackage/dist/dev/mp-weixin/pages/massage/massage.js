@@ -41,6 +41,9 @@ var _default =
       token: '' };
 
   },
+  onLoad: function onLoad() {
+    uni.hideLoading();
+  },
   methods: {
     checkMobile: function checkMobile(mobile) {
       return RegExp(/^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/).test(mobile);
@@ -78,34 +81,43 @@ var _default =
         var that = this;
         var serverUrl = that.serverUrl;
         that.token = uni.getStorageSync('token');
-        uni.request({
-          url: serverUrl + '/memberDetail/update',
-          method: "POST",
-          data: {
-            memberName: that.signName,
-            telephone: that.signNum,
-            hospitalId: that.signHospatel,
-            branchId: that.signOffeice },
-
-          header: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            "token": that.token },
-
+        uni.getLocation({
+          type: 'wgs84',
           success: function success(res) {
-            console.log(res);
-            if (res.data.code == 20000) {
-              uni.setStorageSync('signLongitude', res.longitude); //经度
-              uni.setStorageSync('signLatitude', res.latitude); //纬度
-              uni.navigateTo({
-                url: "../myMes/myMes" });
+            console.log('当前位置的经度：' + res.longitude);
+            console.log('当前位置的纬度：' + res.latitude);
+            uni.setStorageSync('signLongitude', res.longitude); //经度
+            uni.setStorageSync('signLatitude', res.latitude); //纬度
+            uni.request({
+              url: serverUrl + '/memberDetail/update',
+              method: "POST",
+              data: {
+                memberName: that.signName,
+                telephone: that.signNum,
+                hospitalId: that.signHospatel,
+                branchId: that.signOffeice },
 
-            } else {
-              uni.showToast({
-                title: "新增错误，请联系管理员",
-                icon: 'none' });
+              header: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                "token": that.token },
 
-            }
+              success: function success(res) {
+                console.log(res);
+                if (res.data.code == 20000) {
+                  uni.hideLoading();
+                  uni.navigateTo({
+                    url: "../myMes/myMes" });
+
+                } else {
+                  uni.showToast({
+                    title: "新增错误，请联系管理员",
+                    icon: 'none' });
+
+                }
+              } });
+
           } });
+
 
       }
     } } };exports.default = _default;

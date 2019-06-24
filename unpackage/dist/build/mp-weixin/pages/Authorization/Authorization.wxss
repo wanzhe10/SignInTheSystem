@@ -1,17 +1,42 @@
 
-.contant{
+.contant.data-v-42afc67a {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
-	-webkit-box-pack: center;
-	-webkit-justify-content: center;
-	    -ms-flex-pack: center;
-	        justify-content: center;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	    -ms-flex-align: center;
 	        align-items: center;
-	height: 100%;
+	padding-top: 150rpx;
+}
+.buttonStyle.data-v-42afc67a{
+	width: 400rpx;
+}
+.padB64.data-v-42afc67a {
+	padding-top: 64rpx;
+}
+.authorizationIcon.data-v-42afc67a {
+	width: 224rpx;
+	height: 224rpx;
+	margin-bottom: 200rpx;
+}
+.authorization-font.data-v-42afc67a {
+	font-size: 16px;
+	padding-bottom: 20rpx;
+	color: #222222;
+}
+.authorization-smialfont-box.data-v-42afc67a {
+	padding-bottom: 70rpx;
+}
+.authorization-smialfont.data-v-42afc67a {
+	font-size: 14px;
+	color: #999999;
+	padding-bottom: 20rpx;
 }
 

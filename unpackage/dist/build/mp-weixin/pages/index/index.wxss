@@ -1,17 +1,20 @@
 
 .contant {
-text-align: center;
+	text-align: center;
 }
-.page-tittle{
-padding-top:67rpx;
-padding-bottom:26rpx;
+.page-tittle {
+	padding-top: 80rpx;
+	padding-bottom: 30rpx;
+	font-size: 19px;
 }
-.page-nav{
-	padding-bottom:100rpx;
+.page-nav {
+	padding-bottom: 100rpx;
+	font-size: 19px;
 }
-.logo{
-	width: 640rpx;
-	height: 640rpx;
+.logo {
+	width: 480rpx;
+	height: 480rpx;
+	margin-bottom: 80rpx;
 }
 .signIconBox {
 	text-align: center;
@@ -22,12 +25,12 @@ padding-bottom:26rpx;
 }
 .sign-font {
 	font-size: 24px;
-	font-weight: bold;
-	color:#1aad19;
+	color: #1aad19;
 }
-.sign-font-nav{
+.sign-font-nav {
 	font-size: 15px;
-	color:#999999;
-	margin-top:38rpx;
+	color: #999999;
+	margin-top: 34rpx;
 }
 
+page::after{position: fixed;left: -1000px;top: -1000px;content: url(https://cdn.dcloud.net.cn/img/shadow-grey.png)}

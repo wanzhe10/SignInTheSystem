@@ -38,36 +38,51 @@ var _default =
       signNum: '', //电话
       signHospatel: '', //医院
       signOffeice: '', //科室
-      token: '' };
+      token: '',
+      disabledBtn: true };
 
   },
-  onLoad: function onLoad() {var _this = this;
+  onLoad: function onLoad() {
     var that = this;
     var serverUrl = that.serverUrl;
-    that.token = uni.getStorageSync('token');
-    uni.request({
-      url: serverUrl + '/memberDetail/select',
-      method: "GET",
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        "token": that.token },
+    uni.getStorage({
+      key: 'token',
+      success: function success(res) {//成功
+        that.token = uni.getStorageSync('token');
+        uni.request({
+          url: serverUrl + '/memberDetail/select',
+          method: "GET",
+          header: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            "token": that.token },
 
-      success: function success(res) {
-        console.log(res.data.result);
-        if (res.data.code == 20000) {
-          if (res.data.result.memberName !== undefined || res.data.result.memberName !== '') {
-            _this.signName = res.data.result.memberName;
-            _this.signNum = res.data.result.telephone;
-            _this.signHospatel = res.data.result.hospitalName;
-            _this.signOffeice = res.data.result.branchName;
-          }
-        } else {
-          _this.signName = '';
-          _this.signNum = '';
-          _this.signHospatel = '';
-          _this.signOffeice = '';
-        }
+          success: function success(res) {
+            if (res.data.code == 20000) {
+              var memberName = res.data.result.memberName;
+              if (memberName != null) {
+                that.signName = res.data.result.memberName;
+                that.signNum = res.data.result.telephone;
+                that.signHospatel = res.data.result.hospitalName;
+                that.signOffeice = res.data.result.branchName;
+                that.disabledBtn = false;
+              } else {
+                that.signName = '';
+                that.signNum = '';
+                that.signHospatel = '';
+                that.signOffeice = '';
+                that.disabledBtn = true;
+              }
+            }
+          } });
+
+      },
+      fail: function fail(res) {
+        uni.redirectTo({
+          url: "../Authorization/Authorization" });
+
       } });
+
+
 
   },
   methods: {
@@ -131,6 +146,9 @@ var _default =
               uni.showToast({
                 title: "修改失败",
                 icon: 'none' });
+
+              uni.redirectTo({
+                url: "../Authorization/Authorization" });
 
             }
           } });

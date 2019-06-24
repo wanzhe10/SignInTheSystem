@@ -39,7 +39,7 @@
   data: function data() {
     return {
       val: '', // 要生成的二维码值
-      size: 500, // 二维码大小
+      size: 400, // 二维码大小
       unit: 'upx', // 单位
       background: '#fff', // 背景色
       foreground: '#000000', // 前景色
@@ -57,6 +57,7 @@
 
   },
   onLoad: function onLoad() {
+    uni.hideLoading();
     var that = this;
     var serverUrl = that.serverUrl;
     var token = uni.getStorageSync('token');
@@ -92,7 +93,7 @@
         uni.redirectTo({
           url: '../signNoo/signNoo' });
 
-      } else {
+      } else if (socketRes.type == 'LOCATION_MISTAKE') {
         uni.redirectTo({
           url: '../signDefeated/signDefeated' });
 

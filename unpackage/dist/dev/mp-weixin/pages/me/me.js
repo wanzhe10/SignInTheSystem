@@ -54,6 +54,9 @@ var _default =
 
 
   },
+  onLoad: function onLoad() {
+    uni.hideLoading();
+  },
   methods: {
     contactUs: function contactUs() {
       uni.makePhoneCall({

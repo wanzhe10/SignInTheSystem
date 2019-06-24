@@ -29,7 +29,7 @@
 		data() {
 			return {
 				val: '', // 要生成的二维码值
-				size: 500, // 二维码大小
+				size: 400, // 二维码大小
 				unit: 'upx', // 单位
 				background: '#fff', // 背景色
 				foreground: '#000000', // 前景色
@@ -113,7 +113,7 @@
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
-		padding-top: 100upx;
+		padding-top: 80upx;
 		text-align: center;
 	}
 
@@ -124,8 +124,8 @@
 	}
 
 	.qrvalBox {
-		width: 500upx;
-		height: 500upx;
+		width: 400upx;
+		height: 400upx;
 		background: #fff;
 		display: flex;
 		justify-content: center;
@@ -150,7 +150,7 @@
 	}
 
 	.advertising {
-		padding-top: 160upx;
+		padding-top: 150upx;
 		width: 670upx;
 		height: 150upx;
 	}

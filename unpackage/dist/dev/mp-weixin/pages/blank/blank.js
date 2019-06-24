@@ -45,6 +45,10 @@
 //
 //
 //
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -65,6 +69,9 @@ var _default =
         url: "../Authorization/Authorization" });
 
     } else {
+      uni.showLoading({
+        title: '加载中' });
+
       uni.request({
         url: serverUrl + '/questionnaire/selectByMeet', //获取微信授权信息
         method: "GET",
@@ -73,6 +80,8 @@ var _default =
           'token': that.token },
 
         success: function success(res) {
+          console.log(res);
+          uni.hideLoading();
           if (res.data.result == '您已填写过问卷') {
             that.visible = 0;
           } else {
@@ -93,13 +102,25 @@ var _default =
   },
   methods: {
     formSubmit: function formSubmit(e) {
-      console.log(e);
-      console.log(JSON.stringify(e.detail.value));
       var that = this;
       var serverUrl = that.serverUrl;
       var token = uni.getStorageSync('token');
       var resultId = uni.getStorageSync('resultId');
-      var selectVaule = JSON.stringify(e.detail.value);
+      // console.log(e.detail.value)
+      var NumBase = e.detail.value;
+      for (var key in NumBase) {
+        // console.log(key + " " + NumBase[key])
+        if (NumBase[key] == "") {
+          uni.showToast({
+            title: "有未答题目",
+            icon: 'none' });
+
+          return false;
+        } else {
+          var selectVaule = JSON.stringify(e.detail.value);
+        }
+      }
+      console.log(selectVaule);
       uni.request({
         url: serverUrl + '/questionnaireRecord/insert', //获取微信授权信息
         method: "POST",
@@ -124,9 +145,6 @@ var _default =
             icon: 'none' });
 
         } });
-
-
-
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))

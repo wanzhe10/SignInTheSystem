@@ -35,9 +35,6 @@
 .SignSucceed-icon{
 		width: 397rpx;
 		height: 73rpx;
-		padding-bottom: 54rpx;
+		padding-bottom: 50rpx;
 }
-/* .mini-btn{
-		margin-
-	} */
 

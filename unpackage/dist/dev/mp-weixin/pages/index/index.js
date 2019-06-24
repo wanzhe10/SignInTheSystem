@@ -30,8 +30,12 @@ var _default =
     return {
       title: 'Hello',
       logoHttp: '../../static/signIconUp.png',
-      tokenIndex: '' };
+      tokenIndex: '',
+      memberName: '' };
 
+  },
+  onLoad: function onLoad() {
+    uni.hideLoading();
   },
   methods: {
     // 手指按下
@@ -40,6 +44,9 @@ var _default =
     },
     // 手指弹起
     signTouEnd: function signTouEnd() {
+      uni.showLoading({
+        title: '加载中' });
+
       var that = this;
       var serverUrl = that.serverUrl;
       this.logoHttp = '../../static/signIconUp.png';
@@ -47,6 +54,7 @@ var _default =
       uni.getStorage({
         key: 'token',
         success: function success(res) {//成功
+          console.log(res);
           that.tokenIndex = res.data;
           uni.request({
             url: serverUrl + '/memberDetail/select', //获取微信授权信息
@@ -56,17 +64,10 @@ var _default =
 
             success: function success(res) {
               console.log(res);
-              var memberName = res.data.result;
-              var aaa = JSON.stringify(memberName);
-              console.log(aaa.indexOf("memberName") == -1);
-              if (aaa.indexOf("memberName") == -1) {
-                uni.navigateTo({
-                  url: "../massage/massage" });
-
-              } else
-              {
+              that.memberName = res.data.result.memberName;
+              console.log(that.memberName != null);
+              if (that.memberName != null) {
                 uni.setStorageSync('resultId', res.data.result.id); //将 data 存储在本地缓存中指定的 key 中，会覆盖掉原来该 key 对应的内容，这是一个同步接口。
-                uni.setStorageSync('memberResume', res.data.result.memberResume); //将 data 存储在本地缓存中指定的 key 中，会覆盖掉原来该 key 对应的内容，这是一个同步接口。
                 uni.getLocation({
                   type: 'wgs84',
                   success: function success(res) {
@@ -74,10 +75,17 @@ var _default =
                     console.log('当前位置的纬度：' + res.latitude);
                     uni.setStorageSync('signLongitude', res.longitude); //经度
                     uni.setStorageSync('signLatitude', res.latitude); //纬度
+                    uni.hideLoading();
                     uni.redirectTo({
                       url: "../myMes/myMes" });
 
                   } });
+
+              } else {
+                uni.setStorageSync('resultId', res.data.result.id); //将 data 存储在本地缓存中指定的 key 中，会覆盖掉原来该 key 对应的内容，这是一个同步接口。
+                uni.navigateTo({
+                  url: "../massage/massage" });
+
 
               }
             } });

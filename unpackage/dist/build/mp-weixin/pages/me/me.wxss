@@ -32,7 +32,8 @@
 .face {
 	width: 160rpx;
 	height: 160rpx;
-	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	        border-radius: 50%;
 	overflow: hidden;
 }
 .userNickName {

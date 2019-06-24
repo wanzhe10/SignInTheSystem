@@ -21,7 +21,7 @@
   },
   "tabBar": {
     "color": "#bfbfbf",
-    "selectedColor": "#515151",
+    "selectedColor": "#1aad19",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [
@@ -33,7 +33,7 @@
       },
       {
         "pagePath": "pages/blank/blank",
-        "text": "发现",
+        "text": "问卷",
         "iconPath": "static/black.png",
         "selectedIconPath": "static/black-sle.png"
       },

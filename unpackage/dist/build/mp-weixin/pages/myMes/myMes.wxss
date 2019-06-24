@@ -17,7 +17,7 @@
 	-webkit-flex-direction: column;
 	    -ms-flex-direction: column;
 	        flex-direction: column;
-	padding-top: 100rpx;
+	padding-top: 80rpx;
 	text-align: center;
 }
 .page-tittle {
@@ -26,8 +26,8 @@
 	margin-bottom: 30rpx;
 }
 .qrvalBox {
-	width: 500rpx;
-	height: 500rpx;
+	width: 400rpx;
+	height: 400rpx;
 	background: #fff;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -57,7 +57,7 @@
 	width: 400rpx;
 }
 .advertising {
-	padding-top: 160rpx;
+	padding-top: 150rpx;
 	width: 670rpx;
 	height: 150rpx;
 }

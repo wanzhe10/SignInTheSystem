@@ -21,7 +21,7 @@
   },
   "tabBar": {
     "color": "#bfbfbf",
-    "selectedColor": "#515151",
+    "selectedColor": "#1aad19",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [
@@ -33,7 +33,7 @@
       },
       {
         "pagePath": "pages/blank/blank",
-        "text": "发现",
+        "text": "问卷",
         "iconPath": "static/black.png",
         "selectedIconPath": "static/black-sle.png"
       },
@@ -50,5 +50,6 @@
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
 }

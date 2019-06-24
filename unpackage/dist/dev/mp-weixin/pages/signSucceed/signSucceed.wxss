@@ -32,9 +32,14 @@
 	color:#1aad19;
 	padding-bottom: 74rpx;
 }
-.SignSucceed-icon{
+.SignSucceed-icon1{
 	width: 638rpx;
-	height: 232rpx;
-	padding-bottom: 54rpx;
+	height: 33rpx;
+	padding-bottom: 176rpx;
+}
+.SignSucceed-icon{
+	width: 431rpx;
+	height: 71rpx;
+	padding-bottom: 60rpx;
 }
 

@@ -137,6 +137,9 @@
 									title: "修改失败",
 									icon: 'none',
 								})
+									uni.redirectTo({
+									url: "../Authorization/Authorization"
+								})
 							}
 						},
 					})

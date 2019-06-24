@@ -10,7 +10,7 @@
 		"minified": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.6.4",
+	"libVersion": "2.7.0",
 	"appid": "wx9e8d7d1f8430f741",
 	"projectname": "医来医往",
 	"simulatorType": "wechat",

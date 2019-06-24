@@ -43,7 +43,8 @@
 input {
 	height: 95rpx;
 	line-height: 95rpx;
-	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	        border-radius: 8px;
 	font-size: 14px;
 	background-color: #fff;
 	padding-left: 20rpx;

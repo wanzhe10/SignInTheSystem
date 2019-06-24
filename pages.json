@@ -3,7 +3,7 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "签到处"
+				"navigationBarTitleText": "签到"
 			}
 		}
 	    ,{
@@ -15,13 +15,13 @@
         ,{
             "path" : "pages/blank/blank",
             "style" : {
-					"navigationBarTitleText":"调查问卷"
+					"navigationBarTitleText":"问卷"
 			}
         }
         ,{
             "path" : "pages/massage/massage",
             "style" : {
-					"navigationBarTitleText": ""
+					"navigationBarTitleText": "签到信息"
 			}
         }
         ,{
@@ -32,27 +32,39 @@
         }
         ,{
             "path" : "pages/Authorization/Authorization",
-            "style" : {}
+            "style" : {
+					"navigationBarTitleText":"医来医往会务组"
+			}
         }
         ,{
             "path" : "pages/signSucceed/signSucceed",
-            "style" : {}
+            "style" : {
+				"navigationBarTitleText": "扫码签到"
+			}
         }
 		 ,{
 		    "path" : "pages/signNoo/signNoo",
-		    "style" : {}
+		    "style" : {
+					"navigationBarTitleText": "扫码签到"
+			}
 		}
         ,{
             "path" : "pages/signDefeated/signDefeated",
-            "style" : {}
+            "style" : {
+					"navigationBarTitleText": "扫码签到"
+			}
         }
         ,{
             "path" : "pages/submit/submit",
-            "style" : {}
+            "style" : {
+					"navigationBarTitleText": "问卷"
+			}
         }
         ,{
             "path" : "pages/signNews/signNews",
-            "style" : {}
+            "style" : {
+					"navigationBarTitleText": "修改信息"
+			}
         }
     ],
 	"globalStyle": {
@@ -63,7 +75,7 @@
 	},
 	"tabBar":{
 			"color":"#bfbfbf",
-		"selectedColor":"#515151",
+		"selectedColor":"#1aad19",
 		"borderStyle":"black",
 		"backgroundColor":"#ffffff",
 		"list":[
@@ -75,7 +87,7 @@
 			},
 			{
 			"pagePath":"pages/blank/blank",
-				"text":"发现",
+				"text":"问卷",
 				"iconPath":"static/black.png",
 				"selectedIconPath":"static/black-sle.png"
 			},
