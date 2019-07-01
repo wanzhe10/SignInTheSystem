@@ -1,5 +1,5 @@
 
-.contant.data-v-42afc67a {
+.contant.data-v-3da5f4af {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -15,26 +15,26 @@
 	        align-items: center;
 	padding-top: 150rpx;
 }
-.buttonStyle.data-v-42afc67a{
+.buttonStyle.data-v-3da5f4af {
 	width: 400rpx;
 }
-.padB64.data-v-42afc67a {
+.padB64.data-v-3da5f4af {
 	padding-top: 64rpx;
 }
-.authorizationIcon.data-v-42afc67a {
+.authorizationIcon.data-v-3da5f4af {
 	width: 224rpx;
 	height: 224rpx;
 	margin-bottom: 200rpx;
 }
-.authorization-font.data-v-42afc67a {
+.authorization-font.data-v-3da5f4af {
 	font-size: 16px;
 	padding-bottom: 20rpx;
 	color: #222222;
 }
-.authorization-smialfont-box.data-v-42afc67a {
+.authorization-smialfont-box.data-v-3da5f4af {
 	padding-bottom: 70rpx;
 }
-.authorization-smialfont.data-v-42afc67a {
+.authorization-smialfont.data-v-3da5f4af {
 	font-size: 14px;
 	color: #999999;
 	padding-bottom: 20rpx;

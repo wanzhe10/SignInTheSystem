@@ -42,6 +42,10 @@
 	    -ms-flex-align: center;
 	        align-items: center;
 }
+._qrCode{
+		width: 400rpx;
+	height: 400rpx;
+}
 .page-font-green {
 	font-size: 14px;
 	color: #1aad19;

@@ -29,6 +29,7 @@
 		},
 		methods: {
 			wxGetUserInfo(res) {
+				console.log(res)
 				var that = this;
 				var serverUrl = that.serverUrl;
 				if (!res.detail.iv) {
@@ -79,7 +80,8 @@
 		padding-top: 150upx;
 
 	}
-	.buttonStyle{
+
+	.buttonStyle {
 		width: 400upx;
 	}
 
@@ -98,9 +100,11 @@
 		padding-bottom: 20upx;
 		color: #222222;
 	}
+
 	.authorization-smialfont-box {
 		padding-bottom: 70upx;
 	}
+
 	.authorization-smialfont {
 		font-size: 14px;
 		color: #999999;

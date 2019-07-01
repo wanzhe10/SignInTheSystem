@@ -131,6 +131,10 @@
 		justify-content: center;
 		align-items: center;
 	}
+	._qrCode{
+			width: 400upx;
+		height: 400upx;
+	}
 
 	.page-font-green {
 		font-size: 14px;

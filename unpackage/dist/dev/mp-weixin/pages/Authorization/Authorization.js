@@ -39,6 +39,7 @@ var _default =
   },
   methods: {
     wxGetUserInfo: function wxGetUserInfo(res) {
+      console.log(res);
       var that = this;
       var serverUrl = that.serverUrl;
       if (!res.detail.iv) {
